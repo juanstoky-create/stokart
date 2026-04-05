@@ -415,16 +415,10 @@ img {
   overflow: hidden;
 }
 
-.bio-image-placeholder {
+.bio-image-frame img {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--bg-card), #252525);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  letter-spacing: 0.1rem;
+  object-fit: cover;
 }
 
 .bio-image-accent {
@@ -770,6 +764,21 @@ img {
 .obra-meta {
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+.obra-price {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  margin-top: 0.4rem;
+}
+
+.obra-price.sold {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.9rem;
 }
 
 /* --- Clientes --- */
