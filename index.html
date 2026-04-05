@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juan Stok — Arte & Diseño</title>
+  <meta name="description" content="Juan Stok — Artista plástico y diseñador UX. Obras originales, arte personalizado y experiencias visuales únicas desde Tigre, Buenos Aires.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <span class="loader-text">STOK</span>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo">STOK<span class="accent">.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#bio">Bio</a></li>
+      <li><a href="#estilo">Estilo</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#clientes">Clientes</a></li>
+      <li><a href="#exposiciones">Exposiciones</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-paint-stroke stroke-1"></div>
+      <div class="hero-paint-stroke stroke-2"></div>
+      <div class="hero-paint-stroke stroke-3"></div>
+      <canvas id="heroCanvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <p class="hero-subtitle reveal">Artista plástico & Diseñador UX</p>
+      <h1 class="hero-title">
+        <span class="reveal">Juan</span>
+        <span class="reveal">Stok</span>
+      </h1>
+      <p class="hero-tagline reveal">Cada trazo cuenta una historia.<br>Cada obra transforma un espacio.</p>
+      <a href="#catalogo" class="hero-btn reveal">Explorar obras</a>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Bio -->
+  <section class="section bio" id="bio">
+    <div class="container">
+      <div class="bio-grid">
+        <div class="bio-image reveal">
+          <div class="bio-image-frame">
+            <div class="bio-image-placeholder">
+              <span>Foto de Juan</span>
+            </div>
+          </div>
+          <div class="bio-image-accent"></div>
+        </div>
+        <div class="bio-text">
+          <span class="section-label reveal">Sobre mí</span>
+          <h2 class="section-title reveal">La intersección entre<br>arte y diseño</h2>
+          <p class="reveal">Soy Juan Stok, tengo 33 años y vivo en Tigre, Buenos Aires. Mi vida se mueve entre dos mundos que se complementan: el arte plástico y el diseño UX.</p>
+          <p class="reveal">Como artista, busco que cada obra sea un diálogo entre quien la contempla y el espacio que habita. Como diseñador, entiendo que la belleza también debe ser funcional.</p>
+          <p class="reveal">Esta dualidad define mi trabajo: piezas que no solo decoran, sino que transforman ambientes y generan experiencias.</p>
+          <div class="bio-stats reveal">
+            <div class="stat">
+              <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Años creando</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-target="150">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Obras realizadas</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-target="80">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Clientes felices</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estilo -->
+  <section class="section estilo" id="estilo">
+    <div class="container">
+      <span class="section-label reveal">Mi visión</span>
+      <h2 class="section-title reveal">Elegancia que convive<br>con el diseño</h2>
+      <p class="estilo-intro reveal">Mis obras están pensadas para integrarse con arquitectura y diseño de interiores. No son solo cuadros: son piezas que elevan el espacio donde viven.</p>
+      <div class="estilo-grid">
+        <div class="estilo-card reveal">
+          <div class="estilo-card-img">
+            <div class="placeholder-art" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);">
+              <span>Obra en espacio</span>
+            </div>
+          </div>
+          <h3>Arte & Arquitectura</h3>
+          <p>Cada pieza es concebida como parte integral de un espacio, dialogando con la luz, los materiales y la atmósfera del lugar.</p>
+        </div>
+        <div class="estilo-card reveal">
+          <div class="estilo-card-img">
+            <div class="placeholder-art" style="background: linear-gradient(135deg, #2d132c, #801336, #c72c41);">
+              <span>Texturas</span>
+            </div>
+          </div>
+          <h3>Texturas & Materia</h3>
+          <p>Trabajo con capas, relieves y materiales mixtos que aportan profundidad y una presencia física que va más allá de lo visual.</p>
+        </div>
+        <div class="estilo-card reveal">
+          <div class="estilo-card-img">
+            <div class="placeholder-art" style="background: linear-gradient(135deg, #0a3d62, #3c6382, #60a3bc);">
+              <span>Paleta</span>
+            </div>
+          </div>
+          <h3>Paleta Sofisticada</h3>
+          <p>Colores que transmiten calma, elegancia y sofisticación. Una paleta que se adapta y complementa cualquier entorno con buen gusto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Arte contemporáneo</span>
+      <span class="marquee-dot"></span>
+      <span>Diseño UX</span>
+      <span class="marquee-dot"></span>
+      <span>Obras personalizadas</span>
+      <span class="marquee-dot"></span>
+      <span>Tigre, Buenos Aires</span>
+      <span class="marquee-dot"></span>
+      <span>Arte contemporáneo</span>
+      <span class="marquee-dot"></span>
+      <span>Diseño UX</span>
+      <span class="marquee-dot"></span>
+      <span>Obras personalizadas</span>
+      <span class="marquee-dot"></span>
+      <span>Tigre, Buenos Aires</span>
+      <span class="marquee-dot"></span>
+    </div>
+  </div>
+
+  <!-- Servicios -->
+  <section class="section servicios" id="servicios">
+    <div class="container">
+      <span class="section-label reveal">Lo que hago</span>
+      <h2 class="section-title reveal">Servicios</h2>
+      <p class="servicios-intro reveal">Cada obra nace de una conversación. Entiendo tu visión, tu espacio y tu historia para crear algo que te represente.</p>
+      <div class="servicios-grid">
+        <div class="servicio-card reveal">
+          <span class="servicio-number">01</span>
+          <h3>Obras Personalizadas</h3>
+          <p>Creaciones únicas diseñadas en conjunto con vos. Escucho tu historia, interpreto tu visión y la transformo en una pieza que trasciende.</p>
+          <span class="servicio-filosofia">"El arte es un espejo del alma que lo habita"</span>
+        </div>
+        <div class="servicio-card reveal">
+          <span class="servicio-number">02</span>
+          <h3>Arte para Espacios</h3>
+          <p>Intervenciones artísticas pensadas para espacios comerciales, corporativos y residenciales. Diseño y arte se fusionan para crear ambientes memorables.</p>
+          <span class="servicio-filosofia">"Un espacio sin arte es un espacio sin voz"</span>
+        </div>
+        <div class="servicio-card reveal">
+          <span class="servicio-number">03</span>
+          <h3>Consultoría de Arte</h3>
+          <p>Te asesoro en la selección y curación de obras para tu proyecto. Mi mirada como diseñador UX garantiza que cada pieza potencie la experiencia del espacio.</p>
+          <span class="servicio-filosofia">"El buen diseño hace visible lo invisible"</span>
+        </div>
+        <div class="servicio-card reveal">
+          <span class="servicio-number">04</span>
+          <h3>Colecciones Exclusivas</h3>
+          <p>Series limitadas que exploran conceptos profundos. Piezas con metamensaje, donde cada obra invita a la reflexión y conecta con algo más grande.</p>
+          <span class="servicio-filosofia">"Crear es dejar un fragmento de verdad en el mundo"</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section class="section catalogo" id="catalogo">
+    <div class="container">
+      <span class="section-label reveal">Obras</span>
+      <h2 class="section-title reveal">Catálogo</h2>
+      <div class="catalogo-filter reveal">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="abstracto">Abstracto</button>
+        <button class="filter-btn" data-filter="texturas">Texturas</button>
+        <button class="filter-btn" data-filter="serie">Serie Limitada</button>
+      </div>
+      <div class="catalogo-grid">
+        <div class="obra-card reveal" data-category="abstracto">
+          <div class="obra-img">
+            <div class="placeholder-art" style="background: linear-gradient(160deg, #0d1b2a, #1b263b, #415a77);">
+              <span>Obra I</span>
+            </div>
+            <div class="obra-overlay">
+              <span class="obra-view">Ver detalle</span>
+            </div>
+          </div>
+          <div class="obra-info">
+            <h3>Silencio Profundo</h3>
+            <span class="obra-meta">Acrílico sobre lienzo — 120x80cm</span>
+          </div>
+        </div>
+        <div class="obra-card reveal" data-category="texturas">
+          <div class="obra-img">
+            <div class="placeholder-art" style="background: linear-gradient(160deg, #2d132c, #4a1942, #801336);">
+              <span>Obra II</span>
+            </div>
+            <div class="obra-overlay">
+              <span class="obra-view">Ver detalle</span>
+            </div>
+          </div>
+          <div class="obra-info">
+            <h3>Materia Viva</h3>
+            <span class="obra-meta">Técnica mixta — 100x100cm</span>
+          </div>
+        </div>
+        <div class="obra-card reveal" data-category="abstracto">
+          <div class="obra-img">
+            <div class="placeholder-art" style="background: linear-gradient(160deg, #1a1a2e, #16213e, #0f3460);">
+              <span>Obra III</span>
+            </div>
+            <div class="obra-overlay">
+              <span class="obra-view">Ver detalle</span>
+            </div>
+          </div>
+          <div class="obra-info">
+            <h3>Constelación Interior</h3>
+            <span class="obra-meta">Acrílico y oro — 90x60cm</span>
+          </div>
+        </div>
+        <div class="obra-card reveal" data-category="serie">
+          <div class="obra-img">
+            <div class="placeholder-art" style="background: linear-gradient(160deg, #0a3d62, #3c6382, #60a3bc);">
+              <span>Obra IV</span>
+            </div>
+            <div class="obra-overlay">
+              <span class="obra-view">Ver detalle</span>
+            </div>
+          </div>
+          <div class="obra-info">
+            <h3>Fragmento #01</h3>
+            <span class="obra-meta">Serie Limitada — 70x70cm</span>
+          </div>
+        </div>
+        <div class="obra-card reveal" data-category="texturas">
+          <div class="obra-img">
+            <div class="placeholder-art" style="background: linear-gradient(160deg, #1b1b1b, #2d2d2d, #4a4a4a);">
+              <span>Obra V</span>
+            </div>
+            <div class="obra-overlay">
+              <span class="obra-view">Ver detalle</span>
+            </div>
+          </div>
+          <div class="obra-info">
+            <h3>Nocturno</h3>
+            <span class="obra-meta">Técnica mixta — 150x100cm</span>
+          </div>
+        </div>
+        <div class="obra-card reveal" data-category="serie">
+          <div class="obra-img">
+            <div class="placeholder-art" style="background: linear-gradient(160deg, #2c3e50, #34495e, #5d6d7e);">
+              <span>Obra VI</span>
+            </div>
+            <div class="obra-overlay">
+              <span class="obra-view">Ver detalle</span>
+            </div>
+          </div>
+          <div class="obra-info">
+            <h3>Fragmento #02</h3>
+            <span class="obra-meta">Serie Limitada — 70x70cm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clientes -->
+  <section class="section clientes" id="clientes">
+    <div class="container">
+      <span class="section-label reveal">Testimonios</span>
+      <h2 class="section-title reveal">Lo que dicen<br>mis clientes</h2>
+      <div class="clientes-carousel">
+        <div class="clientes-track" id="clientesTrack">
+          <div class="cliente-card">
+            <div class="cliente-quote">"La obra de Juan transformó completamente nuestro living. No es solo un cuadro, es una presencia que cambia la energía del espacio."</div>
+            <div class="cliente-info">
+              <div class="cliente-avatar"><span>MC</span></div>
+              <div>
+                <span class="cliente-name">María C.</span>
+                <span class="cliente-detail">Tigre, Buenos Aires</span>
+              </div>
+            </div>
+          </div>
+          <div class="cliente-card">
+            <div class="cliente-quote">"Trabajar con Juan fue una experiencia increíble. Entendió exactamente lo que queríamos para nuestra oficina y superó todas las expectativas."</div>
+            <div class="cliente-info">
+              <div class="cliente-avatar"><span>LS</span></div>
+              <div>
+                <span class="cliente-name">Luciano S.</span>
+                <span class="cliente-detail">Estudio de arquitectura, CABA</span>
+              </div>
+            </div>
+          </div>
+          <div class="cliente-card">
+            <div class="cliente-quote">"Las texturas y la profundidad de su trabajo son únicas. Cada vez que miro la obra descubro algo nuevo. Una inversión que vale cada peso."</div>
+            <div class="cliente-info">
+              <div class="cliente-avatar"><span>AP</span></div>
+              <div>
+                <span class="cliente-name">Ana P.</span>
+                <span class="cliente-detail">Coleccionista, Nordelta</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clientes-nav">
+          <button class="carousel-btn" id="carouselPrev" aria-label="Anterior">&larr;</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="carouselNext" aria-label="Siguiente">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exposiciones -->
+  <section class="section exposiciones" id="exposiciones">
+    <div class="container">
+      <div class="expo-layout">
+        <div class="expo-left">
+          <span class="section-label reveal">Trayectoria</span>
+          <h2 class="section-title reveal">Exposiciones</h2>
+          <p class="reveal">El arte cobra vida cuando se comparte. Estas son algunas de las experiencias que marcaron mi camino.</p>
+        </div>
+        <div class="expo-right">
+          <div class="expo-timeline">
+            <div class="expo-item reveal">
+              <span class="expo-date">Próximamente</span>
+              <h3>Galería de Arte Contemporáneo</h3>
+              <p>Buenos Aires, Argentina — 2026</p>
+              <span class="expo-badge upcoming">Próxima fecha</span>
+            </div>
+            <div class="expo-item reveal">
+              <span class="expo-date">2025</span>
+              <h3>Feria de Arte Tigre</h3>
+              <p>Museo de Arte Tigre (MAT)</p>
+            </div>
+            <div class="expo-item reveal">
+              <span class="expo-date">2024</span>
+              <h3>Muestra Colectiva</h3>
+              <p>Centro Cultural Borges, CABA</p>
+            </div>
+            <div class="expo-item reveal">
+              <span class="expo-date">2023</span>
+              <h3>Exposición Individual</h3>
+              <p>Espacio de Arte, San Isidro</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="section contacto" id="contacto">
+    <div class="container">
+      <div class="contacto-layout">
+        <div class="contacto-left">
+          <span class="section-label reveal">Hablemos</span>
+          <h2 class="section-title reveal">¿Listo para transformar<br>tu espacio?</h2>
+          <p class="reveal">Escribime y empecemos a crear algo único juntos.</p>
+          <div class="contacto-info reveal">
+            <a href="mailto:hola@juanstok.com" class="contacto-link">
+              <span class="contacto-icon">&#9993;</span>
+              hola@juanstok.com
+            </a>
+            <a href="https://instagram.com/juanstok" target="_blank" rel="noopener" class="contacto-link">
+              <span class="contacto-icon">&#9679;</span>
+              @juanstok
+            </a>
+            <span class="contacto-link">
+              <span class="contacto-icon">&#9906;</span>
+              Tigre, Buenos Aires, Argentina
+            </span>
+          </div>
+        </div>
+        <div class="contacto-right">
+          <form class="contacto-form reveal" id="contactForm">
+            <div class="form-group">
+              <input type="text" id="nombre" name="nombre" required placeholder=" ">
+              <label for="nombre">Nombre</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" required placeholder=" ">
+              <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+              <select id="asunto" name="asunto" required>
+                <option value="" disabled selected>¿En qué puedo ayudarte?</option>
+                <option value="obra-personalizada">Obra personalizada</option>
+                <option value="consulta-catalogo">Consulta sobre catálogo</option>
+                <option value="asesoria">Asesoría de arte</option>
+                <option value="colaboracion">Colaboración</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea id="mensaje" name="mensaje" rows="4" required placeholder=" "></textarea>
+              <label for="mensaje">Mensaje</label>
+            </div>
+            <button type="submit" class="form-submit">
+              <span>Enviar mensaje</span>
+              <span class="submit-arrow">&rarr;</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#hero" class="footer-logo">STOK<span class="accent">.</span></a>
+        <div class="footer-social">
+          <a href="https://instagram.com/juanstok" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://behance.net/juanstok" target="_blank" rel="noopener" aria-label="Behance">BE</a>
+          <a href="https://linkedin.com/in/juanstok" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Juan Stok. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
