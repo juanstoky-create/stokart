@@ -12,6 +12,7 @@ function init() {
   initNav();
   initScrollReveal();
   initRowArrows();
+  initRowDots();
   initCarousel();
   initFAB();
   initForm();
@@ -19,6 +20,7 @@ function init() {
   initBioModal();
   initCardClicks();
   initBeforeAfter();
+  initServicioClicks();
 }
 
 /* ===== BIO MODAL ===== */
@@ -185,6 +187,49 @@ function initFAB() {
 }
 
 /* ===== FORM → WhatsApp ===== */
+/* --- Row scroll dots --- */
+function initRowDots() {
+  const track = document.querySelector('.row-track');
+  const dotsContainer = document.getElementById('obrasDots');
+  if (!track || !dotsContainer) return;
+
+  const cards = track.querySelectorAll('.card');
+  const totalCards = cards.length;
+  const dotsCount = Math.min(totalCards, 10);
+
+  for (let i = 0; i < dotsCount; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('row-dot');
+    if (i === 0) dot.classList.add('active');
+    dotsContainer.appendChild(dot);
+  }
+
+  const dots = dotsContainer.querySelectorAll('.row-dot');
+
+  track.addEventListener('scroll', () => {
+    const scrollPct = track.scrollLeft / (track.scrollWidth - track.clientWidth);
+    const activeIndex = Math.round(scrollPct * (dotsCount - 1));
+    dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+  }, { passive: true });
+}
+
+/* --- Servicio card clicks → WhatsApp --- */
+function initServicioClicks() {
+  const messages = {
+    serv1: 'Hola Juan, me gustaría conversar sobre una obra para mi espacio. ¿Cómo es el proceso?',
+    serv2: 'Hola Juan, me interesa conocer más sobre tu proceso creativo y las técnicas que usás.',
+    serv3: 'Hola Juan, quiero transformar mi espacio con una obra tuya. ¿Podemos coordinar?',
+  };
+
+  document.querySelectorAll('.servicio-card[data-modal]').forEach(card => {
+    card.addEventListener('click', () => {
+      const key = card.dataset.modal;
+      const msg = encodeURIComponent(messages[key] || '');
+      window.open(`https://wa.me/5491161592163?text=${msg}`, '_blank');
+    });
+  });
+}
+
 /* --- Card clicks → WhatsApp --- */
 function initCardClicks() {
   document.querySelectorAll('.card[data-wa]').forEach(card => {
