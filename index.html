@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STOK — Juan Stok | Arte Contemporáneo</title>
-  <meta name="description" content="Juan Stok — Artista plástico y visual. Obras originales, arte personalizado y experiencias visuales únicas desde Tigre, Buenos Aires.">
+  <title>STOK — Juan Stok | Arte & Diseño</title>
+  <meta name="description" content="Juan Stok — Artista plástico y diseñador. Obras originales, arte personalizado y piezas que transforman espacios. Tigre, Buenos Aires.">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,345 +27,261 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#bio">Bio</a></li>
-      <li><a href="#estilo">Estilo</a></li>
+      <li><a href="#obras">Obras</a></li>
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#catalogo">Catálogo</a></li>
       <li><a href="#clientes">Clientes</a></li>
-      <li><a href="#exposiciones">Exposiciones</a></li>
-      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+      <li><a href="#contacto" class="nav-cta">Quiero mi obra</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
+  <!-- ===== HERO — Fold 1: Impacto + Conversión ===== -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <div class="hero-paint-stroke stroke-1"></div>
-      <div class="hero-paint-stroke stroke-2"></div>
-      <div class="hero-paint-stroke stroke-3"></div>
       <canvas id="heroCanvas"></canvas>
     </div>
-    <div class="hero-content">
-      <p class="hero-subtitle reveal">Artista plástico & Visual</p>
+
+    <!-- Top: Name & Identity -->
+    <div class="hero-top">
+      <p class="hero-label scroll-fade">Artista plástico & Diseñador</p>
       <h1 class="hero-title">
-        <span class="reveal">Juan</span>
-        <span class="reveal">Stok</span>
+        <span class="title-line scroll-reveal-up">Juan</span>
+        <span class="title-line scroll-reveal-up" style="animation-delay:.15s">Stok</span>
       </h1>
-      <p class="hero-tagline reveal">Pintar es mi manera de volver a mí.<br>Entre colores y silencios, el caos se convierte en algo bello.</p>
-      <a href="#catalogo" class="hero-btn reveal">Explorar obras</a>
     </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="hero-scroll-line"></div>
-    </div>
-  </section>
 
-  <!-- Bio -->
-  <section class="section bio" id="bio">
-    <div class="container">
-      <div class="bio-grid">
-        <div class="bio-image reveal">
-          <div class="bio-image-frame">
-            <img src="WhatsApp Image 2026-04-05 at 07.06.02.jpeg" alt="Juan Stok pintando en su estudio" loading="lazy">
-          </div>
-          <div class="bio-image-accent"></div>
-        </div>
-        <div class="bio-text">
-          <span class="section-label reveal">Sobre mí</span>
-          <h2 class="section-title reveal">Un puente entre<br>lo visible y lo invisible</h2>
-          <p class="reveal">Desde que tengo memoria, la pintura ha sido mi refugio, un lugar que me permite perderme en los colores, texturas y que siempre sentí más mío que cualquier otro.</p>
-          <p class="reveal">Con el tiempo, mi camino artístico se fue entrelazando con la filosofía, especialmente con lo esotérico y lo estoico. Hoy, me entiendo como una especie de puente entre lo visible y lo invisible, buscando en cada obra tocar algo más allá de lo evidente.</p>
-          <p class="reveal">Cada pieza que creo es una invitación a detenerse, mirar con otros ojos y sentir una conexión más profunda con uno mismo y con el universo.</p>
-          <div class="bio-stats reveal">
-            <div class="stat">
-              <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
-              <span class="stat-label">Obras en catálogo</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number" data-target="3">0</span>
-              <span class="stat-label">Obras vendidas</span>
-            </div>
-          </div>
-        </div>
+    <!-- Center: Image + Tagline -->
+    <div class="hero-center">
+      <div class="hero-image-wrapper scroll-scale">
+        <img src="WhatsApp Image 2026-04-05 at 07.06.02.jpeg" alt="Juan Stok pintando en su estudio">
+        <div class="hero-image-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Bottom: Tagline + CTAs -->
+    <div class="hero-bottom">
+      <p class="hero-tagline scroll-fade">"Pintar es mi manera de volver a mí.<br>Entre colores y silencios, el caos se convierte en algo bello."</p>
+      <div class="hero-ctas">
+        <a href="#obras" class="btn btn-primary scroll-reveal-up">Ver catálogo de obras</a>
+        <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Vi%20tu%20web%20y%20me%20interesa%20una%20obra" target="_blank" rel="noopener" class="btn btn-secondary scroll-reveal-up">Quiero una obra personalizada</a>
+      </div>
+      <div class="hero-scroll-hint">
+        <span>Descubrí más</span>
+        <div class="scroll-arrow"></div>
       </div>
     </div>
   </section>
 
-  <!-- Estilo -->
-  <section class="section estilo" id="estilo">
+  <!-- ===== STATEMENT — Frase + Filosofía (Apple sticky text) ===== -->
+  <section class="statement" id="statement">
     <div class="container">
-      <span class="section-label reveal">Mi visión</span>
-      <h2 class="section-title reveal">Filosofía, color<br>y textura</h2>
-      <p class="estilo-intro reveal">Me gusta experimentar con el color y la textura para transmitir emociones y abrir preguntas sobre la vida, el ser y todo lo que nos rodea.</p>
-      <div class="estilo-grid">
-        <div class="estilo-card reveal">
-          <div class="estilo-card-img">
-            <div class="placeholder-art" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);">
-              <span>Lo esotérico & lo estoico</span>
-            </div>
-          </div>
-          <h3>Filosofía & Espiritualidad</h3>
-          <p>Cada obra busca tocar algo más allá de lo evidente, algo que conecte con lo espiritual y lo misterioso. Arte con metamensaje.</p>
+      <p class="statement-text">
+        <span class="word-reveal">Cada</span>
+        <span class="word-reveal">pieza</span>
+        <span class="word-reveal">que</span>
+        <span class="word-reveal">creo</span>
+        <span class="word-reveal">es</span>
+        <span class="word-reveal">una</span>
+        <span class="word-reveal">invitación</span>
+        <span class="word-reveal">a</span>
+        <span class="word-reveal">detenerse,</span>
+        <span class="word-reveal">mirar</span>
+        <span class="word-reveal">con</span>
+        <span class="word-reveal">otros</span>
+        <span class="word-reveal">ojos</span>
+        <span class="word-reveal">y</span>
+        <span class="word-reveal">sentir</span>
+        <span class="word-reveal">una</span>
+        <span class="word-reveal">conexión</span>
+        <span class="word-reveal">más</span>
+        <span class="word-reveal">profunda.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== OBRAS — Catálogo con scroll horizontal Apple-style ===== -->
+  <section class="section obras" id="obras">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label scroll-fade">Catálogo</span>
+        <h2 class="section-title scroll-reveal-up">Obras originales</h2>
+        <div class="catalogo-filter scroll-fade">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="disponible">Disponibles</button>
+          <button class="filter-btn" data-filter="vendida">Vendidas</button>
         </div>
-        <div class="estilo-card reveal">
-          <div class="estilo-card-img">
-            <div class="placeholder-art" style="background: linear-gradient(135deg, #2d132c, #801336, #c72c41);">
-              <span>Color & Textura</span>
-            </div>
+      </div>
+    </div>
+    <div class="obras-scroll-container">
+      <div class="obras-track" id="obrasTrack">
+        <!-- I. Aurelius -->
+        <article class="obra-card" data-category="disponible">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #c9a96e, #8a6914, #2c1810);"><span>I</span></div>
           </div>
-          <h3>Texturas & Materia</h3>
-          <p>Acrílicos, vino, pasteles, enduido, marcadores y fusiones de agua. Materiales que aportan profundidad y una presencia física única.</p>
-        </div>
-        <div class="estilo-card reveal">
-          <div class="estilo-card-img">
-            <div class="placeholder-art" style="background: linear-gradient(135deg, #0a3d62, #3c6382, #60a3bc);">
-              <span>Arte & Espacio</span>
-            </div>
+          <div class="obra-details">
+            <h3>Aurelius</h3>
+            <p class="obra-tech">Acrílico sobre lienzo</p>
+            <p class="obra-dim">120 x 100 cm — 2023</p>
+            <span class="obra-price">US$ 400</span>
+            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Aurelius" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
           </div>
-          <h3>Integración al Espacio</h3>
-          <p>Cada pieza se integra de manera orgánica al espacio, convirtiéndose en una expresión auténtica que se conecta profundamente con su entorno.</p>
-        </div>
+        </article>
+        <!-- II. Indiga -->
+        <article class="obra-card" data-category="disponible">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #1a0a3e, #2d1b69, #4b0082);"><span>II</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Indiga</h3>
+            <p class="obra-tech">Acrílico sobre madera</p>
+            <p class="obra-dim">150 x 52 cm — 2024</p>
+            <span class="obra-price">US$ 450</span>
+            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Indiga" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
+          </div>
+        </article>
+        <!-- III. Zenon -->
+        <article class="obra-card" data-category="disponible">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #0d1b2a, #1b263b, #415a77);"><span>III</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Zenon</h3>
+            <p class="obra-tech">Acrílico, agua y marcadores sobre lienzo</p>
+            <p class="obra-dim">100 x 60 cm — 2024</p>
+            <span class="obra-price">US$ 200</span>
+            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Zenon" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
+          </div>
+        </article>
+        <!-- IV. Laissez-Gentum -->
+        <article class="obra-card" data-category="disponible">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #2c3e50, #34495e, #5d6d7e);"><span>IV</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Laissez-Gentum</h3>
+            <p class="obra-tech">Acrílico sobre tela</p>
+            <p class="obra-dim">80 x 60 cm — 2023</p>
+            <span class="obra-price">US$ 120</span>
+            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Laissez-Gentum" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
+          </div>
+        </article>
+        <!-- V. Cupa Arcana -->
+        <article class="obra-card" data-category="vendida">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #4a0e0e, #722f37, #8b0000);"><span>V</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Cupa Arcana</h3>
+            <p class="obra-tech">Acrílico y vino sobre tela</p>
+            <p class="obra-dim">60 x 50 cm — 2024</p>
+            <span class="obra-price sold">Vendida</span>
+          </div>
+        </article>
+        <!-- VI. Martini -->
+        <article class="obra-card" data-category="disponible">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #1a1a2e, #16213e, #0f3460);"><span>VI</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Martini</h3>
+            <p class="obra-tech">Acrílico, agua y marcadores sobre lienzo</p>
+            <p class="obra-dim">100 x 60 cm — 2024</p>
+            <span class="obra-price">Consultar precio</span>
+            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Martini" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
+          </div>
+        </article>
+        <!-- VII. Rouge -->
+        <article class="obra-card" data-category="disponible">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #8b0000, #c72c41, #d4456a);"><span>VII</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Rouge</h3>
+            <p class="obra-tech">Acrílico, agua y marcadores sobre madera</p>
+            <p class="obra-dim">60 x 39 cm — 2024</p>
+            <span class="obra-price">US$ 210</span>
+            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Rouge" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
+          </div>
+        </article>
+        <!-- VIII. Kundalini -->
+        <article class="obra-card" data-category="disponible">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #ff6b35, #c44536, #772e25);"><span>VIII</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Kundalini</h3>
+            <p class="obra-tech">Acrílico y pasteles sobre lienzo</p>
+            <p class="obra-dim">100 x 70 cm — 2024</p>
+            <span class="obra-price">US$ 600</span>
+            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Kundalini" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
+          </div>
+        </article>
+        <!-- IX. Catalaxia -->
+        <article class="obra-card" data-category="vendida">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #2d132c, #4a1942, #801336);"><span>IX</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Catalaxia</h3>
+            <p class="obra-tech">Acrílico y enduido sobre lienzo</p>
+            <p class="obra-dim">90 x 130 cm — 2025</p>
+            <span class="obra-price sold">Vendida</span>
+          </div>
+        </article>
+        <!-- X. Mutua Nox -->
+        <article class="obra-card" data-category="disponible">
+          <div class="obra-visual">
+            <div class="obra-placeholder" style="background: linear-gradient(160deg, #0c0c1d, #1a1a3e, #2d2d5e);"><span>X</span></div>
+          </div>
+          <div class="obra-details">
+            <h3>Mutua Nox</h3>
+            <p class="obra-tech">Acrílico sobre lienzo</p>
+            <p class="obra-dim">120 x 100 cm — 2025</p>
+            <span class="obra-price">US$ 800</span>
+            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Mutua%20Nox" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
+          </div>
+        </article>
+      </div>
+    </div>
+    <!-- CTA after catalog -->
+    <div class="container">
+      <div class="obras-bottom-cta scroll-reveal-up">
+        <p>¿Buscás algo único, hecho a tu medida?</p>
+        <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Quiero%20una%20obra%20personalizada" target="_blank" rel="noopener" class="btn btn-primary">Pedí tu obra personalizada</a>
       </div>
     </div>
   </section>
 
-  <!-- Marquee -->
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>Arte contemporáneo</span>
-      <span class="marquee-dot"></span>
-      <span>Filosofía estoica</span>
-      <span class="marquee-dot"></span>
-      <span>Obras personalizadas</span>
-      <span class="marquee-dot"></span>
-      <span>Tigre, Buenos Aires</span>
-      <span class="marquee-dot"></span>
-      <span>Arte contemporáneo</span>
-      <span class="marquee-dot"></span>
-      <span>Filosofía estoica</span>
-      <span class="marquee-dot"></span>
-      <span>Obras personalizadas</span>
-      <span class="marquee-dot"></span>
-      <span>Tigre, Buenos Aires</span>
-      <span class="marquee-dot"></span>
-    </div>
-  </div>
-
-  <!-- Servicios -->
+  <!-- ===== SERVICIOS — Compact ===== -->
   <section class="section servicios" id="servicios">
     <div class="container">
-      <span class="section-label reveal">Lo que hago</span>
-      <h2 class="section-title reveal">Servicios</h2>
-      <p class="servicios-intro reveal">Cada obra nace de una conversación. Entiendo tu visión, tu espacio y tu historia para crear algo que te represente.</p>
+      <span class="section-label scroll-fade">Servicios</span>
+      <h2 class="section-title scroll-reveal-up">Cómo trabajo</h2>
       <div class="servicios-grid">
-        <div class="servicio-card reveal">
+        <div class="servicio-card scroll-reveal-up">
           <span class="servicio-number">01</span>
           <h3>Colaboraciones</h3>
-          <p>Mi proceso creativo se nutre de una estrecha colaboración con el cliente, siempre fiel a mi estilo, pero abierto a interpretar y escuchar tus necesidades. Cada obra es única y hecha a medida, pensada para narrar tu historia personal.</p>
-          <span class="servicio-filosofia">"Que cada pieza se integre al espacio como una expresión auténtica y significativa"</span>
+          <p>Obras únicas y a medida. Escucho tu historia, interpreto tu visión y creo una pieza que se integra a tu espacio como una expresión auténtica.</p>
         </div>
-        <div class="servicio-card reveal">
+        <div class="servicio-card scroll-reveal-up" style="animation-delay:.1s">
           <span class="servicio-number">02</span>
           <h3>Ciclo Performático</h3>
-          <p>Creo obra en tiempo real, frente al público o inmerso entre ellos. En diversos eventos artísticos, brindo al espectador la oportunidad de ser testigo del proceso creativo y descubrir los materiales que utilizo.</p>
-          <span class="servicio-filosofia">"La conexión entre artista y público desencadena una inspiración única, cargada de energía y creatividad compartida"</span>
+          <p>Creo obra en tiempo real, frente al público. Una experiencia única donde el espectador es testigo del proceso creativo y la energía compartida.</p>
         </div>
-        <div class="servicio-card reveal">
+        <div class="servicio-card scroll-reveal-up" style="animation-delay:.2s">
           <span class="servicio-number">03</span>
-          <h3>Obras para Espacios</h3>
-          <p>Intervenciones artísticas pensadas para que no solo cumplan una función decorativa, sino que narren una historia. Piezas que se integran de manera orgánica a tu espacio.</p>
-          <span class="servicio-filosofia">"Un espacio sin arte es un espacio sin voz"</span>
-        </div>
-        <div class="servicio-card reveal">
-          <span class="servicio-number">04</span>
-          <h3>Catálogo de Obras</h3>
-          <p>Obras originales disponibles para adquisición. Cada pieza explora conceptos profundos entre la filosofía estoica, lo esotérico y la búsqueda interior.</p>
-          <span class="servicio-filosofia">"Crear es dejar un fragmento de verdad en el mundo"</span>
+          <h3>Arte & Interiorismo</h3>
+          <p>Piezas pensadas para dialogar con la arquitectura y el diseño de interiores. Arte que eleva espacios residenciales, comerciales y corporativos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Catálogo -->
-  <section class="section catalogo" id="catalogo">
-    <div class="container">
-      <span class="section-label reveal">Obras</span>
-      <h2 class="section-title reveal">Catálogo</h2>
-      <div class="catalogo-filter reveal">
-        <button class="filter-btn active" data-filter="all">Todas</button>
-        <button class="filter-btn" data-filter="disponible">Disponibles</button>
-        <button class="filter-btn" data-filter="vendida">Vendidas</button>
-      </div>
-      <div class="catalogo-grid">
-        <!-- I. Aurelius -->
-        <div class="obra-card reveal" data-category="disponible">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #c9a96e, #8a6914, #2c1810);">
-              <span>I</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Aurelius</h3>
-            <span class="obra-meta">2023 — Acrílico sobre lienzo — 120x100cm</span>
-            <span class="obra-price">US$ 400</span>
-          </div>
-        </div>
-        <!-- II. Indiga -->
-        <div class="obra-card reveal" data-category="disponible">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #1a0a3e, #2d1b69, #4b0082);">
-              <span>II</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Indiga</h3>
-            <span class="obra-meta">2024 — Acrílico sobre madera — 150x52cm</span>
-            <span class="obra-price">US$ 450</span>
-          </div>
-        </div>
-        <!-- III. Zenon -->
-        <div class="obra-card reveal" data-category="disponible">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #0d1b2a, #1b263b, #415a77);">
-              <span>III</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Zenon</h3>
-            <span class="obra-meta">2024 — Acrílico, agua y marcadores sobre lienzo — 100x60cm</span>
-            <span class="obra-price">US$ 200</span>
-          </div>
-        </div>
-        <!-- IV. Laissez-Gentum -->
-        <div class="obra-card reveal" data-category="disponible">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #2c3e50, #34495e, #5d6d7e);">
-              <span>IV</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Laissez-Gentum</h3>
-            <span class="obra-meta">2023 — Acrílico sobre tela — 80x60cm</span>
-            <span class="obra-price">US$ 120</span>
-          </div>
-        </div>
-        <!-- V. Cupa Arcana -->
-        <div class="obra-card reveal" data-category="vendida">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #4a0e0e, #722f37, #8b0000);">
-              <span>V</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Cupa Arcana</h3>
-            <span class="obra-meta">2024 — Acrílico y vino sobre tela — 60x50cm</span>
-            <span class="obra-price sold">Vendida</span>
-          </div>
-        </div>
-        <!-- VI. Martini -->
-        <div class="obra-card reveal" data-category="disponible">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #1a1a2e, #16213e, #0f3460);">
-              <span>VI</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Martini</h3>
-            <span class="obra-meta">2024 — Acrílico, agua y marcadores sobre lienzo — 100x60cm</span>
-            <span class="obra-price">Consultar</span>
-          </div>
-        </div>
-        <!-- VII. Rouge -->
-        <div class="obra-card reveal" data-category="disponible">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #8b0000, #c72c41, #d4456a);">
-              <span>VII</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Rouge</h3>
-            <span class="obra-meta">2024 — Acrílico, agua y marcadores sobre madera — 60x39cm</span>
-            <span class="obra-price">US$ 210</span>
-          </div>
-        </div>
-        <!-- VIII. Kundalini -->
-        <div class="obra-card reveal" data-category="disponible">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #ff6b35, #c44536, #772e25);">
-              <span>VIII</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Kundalini</h3>
-            <span class="obra-meta">2024 — Acrílico y pasteles sobre lienzo — 100x70cm</span>
-            <span class="obra-price">US$ 600</span>
-          </div>
-        </div>
-        <!-- IX. Catalaxia -->
-        <div class="obra-card reveal" data-category="vendida">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #2d132c, #4a1942, #801336);">
-              <span>IX</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Catalaxia</h3>
-            <span class="obra-meta">2025 — Acrílico y enduido sobre lienzo — 90x130cm</span>
-            <span class="obra-price sold">Vendida</span>
-          </div>
-        </div>
-        <!-- X. Mutua Nox -->
-        <div class="obra-card reveal" data-category="disponible">
-          <div class="obra-img">
-            <div class="placeholder-art" style="background: linear-gradient(160deg, #0c0c1d, #1a1a3e, #2d2d5e);">
-              <span>X</span>
-            </div>
-            <div class="obra-overlay">
-              <span class="obra-view">Ver detalle</span>
-            </div>
-          </div>
-          <div class="obra-info">
-            <h3>Mutua Nox</h3>
-            <span class="obra-meta">2025 — Acrílico sobre lienzo — 120x100cm</span>
-            <span class="obra-price">US$ 800</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clientes -->
+  <!-- ===== CLIENTES ===== -->
   <section class="section clientes" id="clientes">
     <div class="container">
-      <span class="section-label reveal">Testimonios</span>
-      <h2 class="section-title reveal">Lo que dicen<br>mis clientes</h2>
+      <span class="section-label scroll-fade">Testimonios</span>
+      <h2 class="section-title scroll-reveal-up">Clientes</h2>
       <div class="clientes-carousel">
         <div class="clientes-track" id="clientesTrack">
           <div class="cliente-card">
@@ -379,7 +295,7 @@
             </div>
           </div>
           <div class="cliente-card">
-            <div class="cliente-quote">"Trabajar con Juan fue una experiencia increíble. Entendió exactamente lo que queríamos y superó todas las expectativas. La pieza se integra perfecto al espacio."</div>
+            <div class="cliente-quote">"Trabajar con Juan fue una experiencia increíble. Entendió exactamente lo que queríamos y superó todas las expectativas."</div>
             <div class="cliente-info">
               <div class="cliente-avatar"><span>LS</span></div>
               <div>
@@ -389,7 +305,7 @@
             </div>
           </div>
           <div class="cliente-card">
-            <div class="cliente-quote">"Las texturas y la profundidad de su trabajo son únicas. Cada vez que miro la obra descubro algo nuevo. Una inversión que vale cada peso."</div>
+            <div class="cliente-quote">"Las texturas y la profundidad de su trabajo son únicas. Cada vez que miro la obra descubro algo nuevo."</div>
             <div class="cliente-info">
               <div class="cliente-avatar"><span>AP</span></div>
               <div>
@@ -408,73 +324,23 @@
     </div>
   </section>
 
-  <!-- Exposiciones -->
-  <section class="section exposiciones" id="exposiciones">
-    <div class="container">
-      <div class="expo-layout">
-        <div class="expo-left">
-          <span class="section-label reveal">Trayectoria</span>
-          <h2 class="section-title reveal">Exposiciones</h2>
-          <p class="reveal">El arte cobra vida cuando se comparte. Estas son algunas de las experiencias que marcaron mi camino.</p>
-        </div>
-        <div class="expo-right">
-          <div class="expo-timeline">
-            <div class="expo-item reveal">
-              <span class="expo-date">Próximamente</span>
-              <h3>Galería de Arte Contemporáneo</h3>
-              <p>Buenos Aires, Argentina — 2026</p>
-              <span class="expo-badge upcoming">Próxima fecha</span>
-            </div>
-            <div class="expo-item reveal">
-              <span class="expo-date">2025</span>
-              <h3>Feria de Arte Tigre</h3>
-              <p>Museo de Arte Tigre (MAT)</p>
-            </div>
-            <div class="expo-item reveal">
-              <span class="expo-date">2024</span>
-              <h3>Muestra Colectiva</h3>
-              <p>Centro Cultural Borges, CABA</p>
-            </div>
-            <div class="expo-item reveal">
-              <span class="expo-date">2023</span>
-              <h3>Exposición Individual</h3>
-              <p>Espacio de Arte, San Isidro</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contacto -->
+  <!-- ===== CONTACTO — Compact ===== -->
   <section class="section contacto" id="contacto">
     <div class="container">
       <div class="contacto-layout">
         <div class="contacto-left">
-          <span class="section-label reveal">Hablemos</span>
-          <h2 class="section-title reveal">¿Listo para transformar<br>tu espacio?</h2>
-          <p class="reveal">Escribime y empecemos a crear algo único juntos.</p>
-          <div class="contacto-info reveal">
-            <a href="mailto:juanstoky@gmail.com" class="contacto-link">
-              <span class="contacto-icon">&#9993;</span>
-              juanstoky@gmail.com
-            </a>
-            <a href="https://instagram.com/jnstok" target="_blank" rel="noopener" class="contacto-link">
-              <span class="contacto-icon">&#9679;</span>
-              @jnstok
-            </a>
-            <a href="https://wa.me/5491161592163" target="_blank" rel="noopener" class="contacto-link">
-              <span class="contacto-icon">&#9742;</span>
-              11-6159-2163
-            </a>
-            <span class="contacto-link">
-              <span class="contacto-icon">&#9906;</span>
-              Tigre, Buenos Aires, Argentina
-            </span>
+          <span class="section-label scroll-fade">Contacto</span>
+          <h2 class="section-title scroll-reveal-up">¿Transformamos<br>tu espacio?</h2>
+          <p class="scroll-fade">Escribime y empecemos a crear algo único juntos.</p>
+          <div class="contacto-info scroll-fade">
+            <a href="mailto:juanstoky@gmail.com" class="contacto-link">juanstoky@gmail.com</a>
+            <a href="https://instagram.com/jnstok" target="_blank" rel="noopener" class="contacto-link">@jnstok</a>
+            <span class="contacto-link">Tigre, Buenos Aires</span>
           </div>
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Vi%20tu%20web%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="btn btn-primary scroll-reveal-up" style="margin-top:2rem">Escribime por WhatsApp</a>
         </div>
         <div class="contacto-right">
-          <form class="contacto-form reveal" id="contactForm">
+          <form class="contacto-form scroll-reveal-up" id="contactForm">
             <div class="form-group">
               <input type="text" id="nombre" name="nombre" required placeholder=" ">
               <label for="nombre">Nombre</label>
@@ -486,18 +352,18 @@
             <div class="form-group">
               <select id="asunto" name="asunto" required>
                 <option value="" disabled selected>¿En qué puedo ayudarte?</option>
-                <option value="obra-personalizada">Obra personalizada / Colaboración</option>
-                <option value="consulta-catalogo">Consulta sobre catálogo</option>
+                <option value="obra-personalizada">Quiero una obra personalizada</option>
+                <option value="consulta-catalogo">Me interesa una obra del catálogo</option>
                 <option value="ciclo-performatico">Ciclo performático / Evento</option>
                 <option value="otro">Otro</option>
               </select>
             </div>
             <div class="form-group">
-              <textarea id="mensaje" name="mensaje" rows="4" required placeholder=" "></textarea>
+              <textarea id="mensaje" name="mensaje" rows="3" required placeholder=" "></textarea>
               <label for="mensaje">Mensaje</label>
             </div>
             <button type="submit" class="form-submit">
-              <span>Enviar mensaje</span>
+              <span>Enviar</span>
               <span class="submit-arrow">&rarr;</span>
             </button>
           </form>
@@ -512,14 +378,19 @@
       <div class="footer-content">
         <a href="#hero" class="footer-logo">STOK<span class="accent">.</span></a>
         <div class="footer-social">
-          <a href="https://instagram.com/jnstok" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-          <a href="mailto:juanstoky@gmail.com" aria-label="Email">EM</a>
-          <a href="https://wa.me/5491161592163" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+          <a href="https://instagram.com/jnstok" target="_blank" rel="noopener">IG</a>
+          <a href="mailto:juanstoky@gmail.com">EM</a>
+          <a href="https://wa.me/5491161592163" target="_blank" rel="noopener">WA</a>
         </div>
-        <p class="footer-copy">&copy; 2026 Juan Stok. Todos los derechos reservados.</p>
+        <p class="footer-copy">&copy; 2026 Juan Stok</p>
       </div>
     </div>
   </footer>
+
+  <!-- FAB WhatsApp -->
+  <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Vi%20tu%20web%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="fab-whatsapp" id="fabWa" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
   <script src="script.js"></script>
 </body>
