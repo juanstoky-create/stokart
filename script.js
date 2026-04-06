@@ -16,6 +16,34 @@ function init() {
   initFAB();
   initForm();
   initHeroParallax();
+  initBioModal();
+}
+
+/* ===== BIO MODAL ===== */
+function initBioModal() {
+  const modal = document.getElementById('bioModal');
+  const openBtn = document.getElementById('openBioModal');
+  const closeBtn = document.getElementById('closeBioModal');
+  if (!modal || !openBtn) return;
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+
+  function close() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 }
 
 /* ===== NAV ===== */

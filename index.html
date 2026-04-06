@@ -37,7 +37,7 @@
   <!-- ===== HERO — Netflix-style full bleed ===== -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <img src="img/mutua-nox-space.jpg" alt="Obra Mutua Nox en espacio de diseño" class="hero-bg-img">
+      <img src="WhatsApp Image 2026-04-05 at 07.06.02.jpeg" alt="Juan Stok pintando en su estudio" class="hero-bg-img">
       <div class="hero-gradient"></div>
     </div>
     <div class="hero-content">
@@ -53,9 +53,37 @@
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
           Ver catálogo
         </a>
+        <button class="btn btn-ghost" id="openBioModal">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Conocé mi historia
+        </button>
       </div>
     </div>
   </section>
+
+  <!-- ===== MODAL BIO ===== -->
+  <div class="modal-overlay" id="bioModal">
+    <div class="modal">
+      <button class="modal-close" id="closeBioModal" aria-label="Cerrar">&times;</button>
+      <div class="modal-body">
+        <div class="modal-img">
+          <img src="img/juan-painting.jpg" alt="Juan Stok pintando">
+        </div>
+        <div class="modal-content">
+          <span class="modal-label">Sobre mí</span>
+          <h2 class="modal-title">Un puente entre lo visible y lo invisible</h2>
+          <p>Desde que tengo memoria, la pintura ha sido mi refugio, un lugar que me permite perderme en los colores, texturas y que siempre sentí más mío que cualquier otro.</p>
+          <p>Con el tiempo, mi camino artístico se fue entrelazando con la filosofía, especialmente con <strong>lo esotérico y lo estoico</strong>. Hoy, me entiendo como una especie de puente entre lo visible y lo invisible, buscando en cada obra tocar algo más allá de lo evidente.</p>
+          <h3 class="modal-subtitle">Formación</h3>
+          <p>Artista plástico y diseñador, con formación en Diseño UX y una visión integral que fusiona arte y funcionalidad. Mi trabajo vive en la intersección entre la expresión artística y el interiorismo — cada pieza dialoga con el espacio que la rodea.</p>
+          <h3 class="modal-subtitle">Lo que me inspira</h3>
+          <p>Me gusta experimentar con el color y la textura para transmitir emociones y abrir preguntas sobre la vida, el ser y todo lo que nos rodea. La filosofía estoica, lo místico y la búsqueda interior son el motor de cada obra.</p>
+          <blockquote class="modal-quote">"Pintar es mi manera de volver a mí. Entre colores y silencios, el caos se convierte en algo bello."</blockquote>
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Vi%20tu%20historia%20y%20me%20encantaría%20charlar%20sobre%20una%20obra" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:1.5rem">Hablemos sobre tu proyecto</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== OBRAS — Netflix-style rows ===== -->
   <section class="section obras" id="obras">
