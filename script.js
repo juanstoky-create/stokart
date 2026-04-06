@@ -17,6 +17,8 @@ function init() {
   initForm();
   initHeroParallax();
   initBioModal();
+  initCardClicks();
+  initBeforeAfter();
 }
 
 /* ===== BIO MODAL ===== */
@@ -183,6 +185,42 @@ function initFAB() {
 }
 
 /* ===== FORM → WhatsApp ===== */
+/* --- Card clicks → WhatsApp --- */
+function initCardClicks() {
+  document.querySelectorAll('.card[data-wa]').forEach(card => {
+    card.addEventListener('click', () => {
+      const msg = encodeURIComponent(card.dataset.wa);
+      window.open(`https://wa.me/5491161592163?text=${msg}`, '_blank');
+    });
+  });
+}
+
+/* --- Before/After slider --- */
+function initBeforeAfter() {
+  const container = document.getElementById('beforeAfter');
+  const after = document.getElementById('baAfter');
+  const slider = document.getElementById('baSlider');
+  if (!container || !after || !slider) return;
+
+  let dragging = false;
+
+  function setPosition(x) {
+    const rect = container.getBoundingClientRect();
+    let pct = ((x - rect.left) / rect.width) * 100;
+    pct = Math.max(5, Math.min(95, pct));
+    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    slider.style.left = `${pct}%`;
+  }
+
+  container.addEventListener('mousedown', (e) => { dragging = true; setPosition(e.clientX); });
+  window.addEventListener('mouseup', () => { dragging = false; });
+  window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
+
+  container.addEventListener('touchstart', (e) => { dragging = true; setPosition(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('touchend', () => { dragging = false; });
+  window.addEventListener('touchmove', (e) => { if (dragging) setPosition(e.touches[0].clientX); }, { passive: true });
+}
+
 function initForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
