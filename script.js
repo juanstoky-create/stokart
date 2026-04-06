@@ -21,6 +21,7 @@ function init() {
   initCardClicks();
   initBeforeAfter();
   initServicioClicks();
+  initVisualizador();
 }
 
 /* ===== BIO MODAL ===== */
@@ -264,6 +265,199 @@ function initBeforeAfter() {
   container.addEventListener('touchstart', (e) => { dragging = true; setPosition(e.touches[0].clientX); }, { passive: true });
   window.addEventListener('touchend', () => { dragging = false; });
   window.addEventListener('touchmove', (e) => { if (dragging) setPosition(e.touches[0].clientX); }, { passive: true });
+}
+
+/* ===== VISUALIZADOR MODAL ===== */
+function initVisualizador() {
+  const modal = document.getElementById('vizModal');
+  const openBtn = document.getElementById('openVisualizador');
+  const closeBtn = document.getElementById('closeVizModal');
+  if (!modal || !openBtn) return;
+
+  const steps = [document.getElementById('vizStep1'), document.getElementById('vizStep2'), document.getElementById('vizStep3')];
+  const progressBar = document.getElementById('vizProgressBar');
+  const stepDots = modal.querySelectorAll('.viz-step-dot');
+  let currentStep = 0;
+
+  // State
+  let spaceImageData = null;
+  let selectedObra = null;
+  let selectedObraImg = null;
+  let isCustom = false;
+
+  // Open / Close
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function goToStep(n) {
+    steps[currentStep].classList.remove('viz-step-active');
+    steps[n].classList.add('viz-step-active');
+    currentStep = n;
+    progressBar.style.width = `${((n + 1) / 3) * 100}%`;
+    stepDots.forEach((dot, i) => {
+      dot.classList.remove('active', 'done');
+      if (i < n) dot.classList.add('done');
+      if (i === n) dot.classList.add('active');
+    });
+    if (n === 2) buildSummary();
+  }
+
+  // Step 1: File upload
+  const uploadArea = document.getElementById('vizUpload');
+  const fileInput = document.getElementById('vizFileInput');
+  const previewSpace = document.getElementById('vizPreviewSpace');
+  const spaceImg = document.getElementById('vizSpaceImg');
+  const changeBtn = document.getElementById('vizChangeImg');
+  const next1 = document.getElementById('vizNext1');
+
+  uploadArea.addEventListener('click', (e) => {
+    if (e.target.closest('.viz-upload-btn')) return;
+    fileInput.click();
+  });
+
+  uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+  uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+  });
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files.length) handleFile(fileInput.files[0]);
+  });
+
+  changeBtn.addEventListener('click', () => {
+    previewSpace.style.display = 'none';
+    uploadArea.style.display = '';
+    spaceImageData = null;
+    next1.disabled = true;
+    fileInput.value = '';
+  });
+
+  function handleFile(file) {
+    if (!file.type.startsWith('image/')) return;
+    if (file.size > 10 * 1024 * 1024) { alert('La imagen supera los 10 MB.'); return; }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      spaceImageData = e.target.result;
+      spaceImg.src = spaceImageData;
+      uploadArea.style.display = 'none';
+      previewSpace.style.display = '';
+      next1.disabled = false;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  next1.addEventListener('click', () => goToStep(1));
+
+  // Step 2: Tabs
+  const tabs = modal.querySelectorAll('.viz-tab');
+  const tabContents = [document.getElementById('vizTabCatalog'), document.getElementById('vizTabCustom')];
+  const next2 = document.getElementById('vizNext2');
+  const back2 = document.getElementById('vizBack2');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const isCatalog = tab.dataset.tab === 'catalog';
+      tabContents[0].classList.toggle('active', isCatalog);
+      tabContents[1].classList.toggle('active', !isCatalog);
+      isCustom = !isCatalog;
+      validateStep2();
+    });
+  });
+
+  // Catalog selection
+  const catalogCards = modal.querySelectorAll('.viz-catalog-card');
+  catalogCards.forEach(card => {
+    card.addEventListener('click', () => {
+      catalogCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      selectedObra = card.dataset.obra;
+      selectedObraImg = card.dataset.img;
+      validateStep2();
+    });
+  });
+
+  // Custom form validation
+  const vizPaleta = document.getElementById('vizPaleta');
+  const vizTamaño = document.getElementById('vizTamaño');
+  const vizEstilo = document.getElementById('vizEstilo');
+  const vizConcepto = document.getElementById('vizConcepto');
+  [vizPaleta, vizTamaño, vizEstilo, vizConcepto].forEach(el => {
+    el.addEventListener('change', validateStep2);
+    el.addEventListener('input', validateStep2);
+  });
+
+  function validateStep2() {
+    if (isCustom) {
+      next2.disabled = !(vizPaleta.value && vizTamaño.value);
+    } else {
+      next2.disabled = !selectedObra;
+    }
+  }
+
+  next2.addEventListener('click', () => goToStep(2));
+  back2.addEventListener('click', () => goToStep(0));
+
+  // Step 3: Summary + Send
+  const back3 = document.getElementById('vizBack3');
+  const sendBtn = document.getElementById('vizSend');
+
+  back3.addEventListener('click', () => goToStep(1));
+
+  function buildSummary() {
+    const summaryImg = document.getElementById('vizSummarySpaceImg');
+    const details = document.getElementById('vizSummaryDetails');
+    summaryImg.src = spaceImageData || '';
+
+    let html = '';
+    if (isCustom) {
+      html += item('Tipo', 'Obra personalizada');
+      if (vizPaleta.value) html += item('Paleta', vizPaleta.value);
+      if (vizTamaño.value) html += item('Tamaño', vizTamaño.value);
+      if (vizEstilo.value) html += item('Estilo', vizEstilo.value);
+      if (vizConcepto.value) html += item('Concepto', vizConcepto.value);
+    } else {
+      html += item('Obra seleccionada', selectedObra);
+      if (selectedObraImg) html += `<img class="viz-summary-obra-img" src="${selectedObraImg}" alt="${selectedObra}">`;
+    }
+    details.innerHTML = html;
+
+    // Build WhatsApp link
+    let msg = 'Hola Juan! Vi tu web y quiero consultarte.\n\n';
+    if (isCustom) {
+      msg += '🎨 Me interesa una OBRA PERSONALIZADA:\n';
+      if (vizPaleta.value) msg += `• Paleta: ${vizPaleta.value}\n`;
+      if (vizTamaño.value) msg += `• Tamaño: ${vizTamaño.value}\n`;
+      if (vizEstilo.value) msg += `• Estilo: ${vizEstilo.value}\n`;
+      if (vizConcepto.value) msg += `• Concepto: ${vizConcepto.value}\n`;
+    } else {
+      msg += `🖼️ Me interesa la obra "${selectedObra}" para mi espacio.\n`;
+    }
+    msg += '\n📸 Adjunté una foto de mi espacio en el visualizador de tu web.';
+    msg += '\n\n¿Podemos coordinar?';
+
+    sendBtn.href = `https://wa.me/5491161592163?text=${encodeURIComponent(msg)}`;
+  }
+
+  function item(label, value) {
+    return `<div class="viz-summary-item"><span class="viz-summary-label">${label}</span><span class="viz-summary-value">${value}</span></div>`;
+  }
 }
 
 function initForm() {

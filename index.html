@@ -89,6 +89,179 @@
     </div>
   </div>
 
+  <!-- ===== MODAL VISUALIZADOR ===== -->
+  <div class="modal-overlay" id="vizModal">
+    <div class="modal viz-modal">
+      <button class="modal-close" id="closeVizModal" aria-label="Cerrar">&times;</button>
+
+      <!-- Progress bar -->
+      <div class="viz-progress">
+        <div class="viz-progress-bar" id="vizProgressBar"></div>
+      </div>
+      <div class="viz-steps-indicator">
+        <span class="viz-step-dot active" data-step="1">1</span>
+        <span class="viz-step-line"></span>
+        <span class="viz-step-dot" data-step="2">2</span>
+        <span class="viz-step-line"></span>
+        <span class="viz-step-dot" data-step="3">3</span>
+      </div>
+
+      <!-- Step 1: Upload -->
+      <div class="viz-step viz-step-active" id="vizStep1">
+        <div class="viz-step-content">
+          <span class="modal-label">Paso 1 de 3</span>
+          <h2 class="viz-title">Subí una foto de tu espacio</h2>
+          <p class="viz-desc">Elegí la pared o el ambiente donde imaginás tu obra. Cuanto mejor la foto, más precisa la visualización.</p>
+          <div class="viz-upload" id="vizUpload">
+            <div class="viz-upload-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <span class="viz-upload-text">Arrastrá tu imagen aquí</span>
+            <span class="viz-upload-or">o</span>
+            <label class="btn btn-ghost viz-upload-btn">
+              Elegir archivo
+              <input type="file" accept="image/*" id="vizFileInput" hidden>
+            </label>
+            <span class="viz-upload-hint">JPG, PNG — Máx. 10 MB</span>
+          </div>
+          <div class="viz-preview-space" id="vizPreviewSpace" style="display:none">
+            <img id="vizSpaceImg" alt="Tu espacio">
+            <button class="viz-change-img" id="vizChangeImg">Cambiar imagen</button>
+          </div>
+          <div class="viz-nav">
+            <span></span>
+            <button class="btn btn-primary viz-next" id="vizNext1" disabled>Siguiente &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Select artwork or customize -->
+      <div class="viz-step" id="vizStep2">
+        <div class="viz-step-content">
+          <span class="modal-label">Paso 2 de 3</span>
+          <h2 class="viz-title">Elegí o diseñá tu obra</h2>
+
+          <div class="viz-tabs">
+            <button class="viz-tab active" data-tab="catalog">Del catálogo</button>
+            <button class="viz-tab" data-tab="custom">Personalizada</button>
+          </div>
+
+          <!-- Tab: Catalog -->
+          <div class="viz-tab-content active" id="vizTabCatalog">
+            <div class="viz-catalog" id="vizCatalog">
+              <div class="viz-catalog-card" data-obra="Aurelius" data-img="img/aurelius-space.jpg">
+                <img src="img/aurelius-space.jpg" alt="Aurelius" loading="lazy">
+                <span>Aurelius</span>
+              </div>
+              <div class="viz-catalog-card" data-obra="Indiga" data-img="img/indiga-space.jpg">
+                <img src="img/indiga-space.jpg" alt="Indiga" loading="lazy">
+                <span>Indiga</span>
+              </div>
+              <div class="viz-catalog-card" data-obra="Zenon" data-img="img/zenon-space.jpg">
+                <img src="img/zenon-space.jpg" alt="Zenon" loading="lazy">
+                <span>Zenon</span>
+              </div>
+              <div class="viz-catalog-card" data-obra="Laissez-Gentum" data-img="img/laissez-space.jpg">
+                <img src="img/laissez-space.jpg" alt="Laissez-Gentum" loading="lazy">
+                <span>Laissez-Gentum</span>
+              </div>
+              <div class="viz-catalog-card" data-obra="Martini" data-img="img/martini-space.jpg">
+                <img src="img/martini-space.jpg" alt="Martini" loading="lazy">
+                <span>Martini</span>
+              </div>
+              <div class="viz-catalog-card" data-obra="Rouge" data-img="img/rouge-space.jpg">
+                <img src="img/rouge-space.jpg" alt="Rouge" loading="lazy">
+                <span>Rouge</span>
+              </div>
+              <div class="viz-catalog-card" data-obra="Kundalini" data-img="img/kundalini-space.jpg">
+                <img src="img/kundalini-space.jpg" alt="Kundalini" loading="lazy">
+                <span>Kundalini</span>
+              </div>
+              <div class="viz-catalog-card" data-obra="Mutua Nox" data-img="img/mutua-nox-space.jpg">
+                <img src="img/mutua-nox-space.jpg" alt="Mutua Nox" loading="lazy">
+                <span>Mutua Nox</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Custom -->
+          <div class="viz-tab-content" id="vizTabCustom">
+            <div class="viz-custom-form">
+              <div class="viz-form-row">
+                <div class="form-group">
+                  <select id="vizPaleta">
+                    <option value="" disabled selected>Paleta de colores</option>
+                    <option value="Cálidos (tierras, dorados, ocres)">Cálidos — tierras, dorados, ocres</option>
+                    <option value="Fríos (azules, violetas, grises)">Fríos — azules, violetas, grises</option>
+                    <option value="Neutros (blancos, negros, grises)">Neutros — blancos, negros, grises</option>
+                    <option value="Vibrantes (rojos, naranjas, amarillos)">Vibrantes — rojos, naranjas, amarillos</option>
+                    <option value="Mixto / A definir">Mixto / A definir</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select id="vizTamaño">
+                    <option value="" disabled selected>Tamaño aproximado</option>
+                    <option value="Pequeño (hasta 50x50 cm)">Pequeño (hasta 50x50 cm)</option>
+                    <option value="Mediano (50-100 cm)">Mediano (50-100 cm)</option>
+                    <option value="Grande (100-150 cm)">Grande (100-150 cm)</option>
+                    <option value="Extra grande (más de 150 cm)">Extra grande (más de 150 cm)</option>
+                    <option value="A definir">A definir</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <select id="vizEstilo">
+                  <option value="" disabled selected>Estilo / Concepto</option>
+                  <option value="Abstracto expresivo">Abstracto expresivo</option>
+                  <option value="Textural / matérico">Textural / matérico</option>
+                  <option value="Filosófico / estoico">Filosófico / estoico</option>
+                  <option value="Orgánico / natural">Orgánico / natural</option>
+                  <option value="Libre / sorprendeme">Libre / sorprendeme</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <textarea id="vizConcepto" rows="3" placeholder=" "></textarea>
+                <label for="vizConcepto">Contame tu visión — ¿qué sentís que necesita tu espacio?</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="viz-nav">
+            <button class="btn btn-ghost viz-back" id="vizBack2">&larr; Atrás</button>
+            <button class="btn btn-primary viz-next" id="vizNext2" disabled>Siguiente &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Preview + Send -->
+      <div class="viz-step" id="vizStep3">
+        <div class="viz-step-content">
+          <span class="modal-label">Paso 3 de 3</span>
+          <h2 class="viz-title">Tu espacio, transformado</h2>
+          <p class="viz-desc">Revisá el resumen y envialo. Me pongo en contacto para coordinar los próximos pasos.</p>
+
+          <div class="viz-summary">
+            <div class="viz-summary-space">
+              <img id="vizSummarySpaceImg" alt="Tu espacio">
+            </div>
+            <div class="viz-summary-details" id="vizSummaryDetails">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <div class="viz-nav">
+            <button class="btn btn-ghost viz-back" id="vizBack3">&larr; Atrás</button>
+            <a class="btn btn-primary viz-send" id="vizSend" href="#" target="_blank" rel="noopener">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enviar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ===== OBRAS — Catálogo unificado ===== -->
   <section class="section obras" id="obras">
 
@@ -294,7 +467,7 @@
               <li>Se integra orgánicamente a tu ambiente</li>
               <li>Materiales nobles y técnicas mixtas</li>
             </ul>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan,%20me%20interesa%20una%20obra%20personalizada%20para%20mi%20espacio.%20¿Podemos%20conversar?" target="_blank" rel="noopener" class="btn btn-primary scroll-reveal-up">Diseñemos tu obra juntos</a>
+            <button class="btn btn-primary scroll-reveal-up" id="openVisualizador">Visualizá tu espacio</button>
           </div>
         </div>
       </div>
