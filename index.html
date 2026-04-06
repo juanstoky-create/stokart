@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STOK — Juan Stok | Arte & Diseño</title>
-  <meta name="description" content="Juan Stok — Artista plástico y diseñador. Obras originales, arte personalizado y piezas que transforman espacios. Tigre, Buenos Aires.">
+  <meta name="description" content="Juan Stok — Artista plástico y diseñador. Obras originales que transforman espacios. Tigre, Buenos Aires.">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,244 +34,174 @@
     </ul>
   </nav>
 
-  <!-- ===== HERO — Fold 1: Impacto + Conversión ===== -->
+  <!-- ===== HERO — Netflix-style full bleed ===== -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <canvas id="heroCanvas"></canvas>
+      <img src="img/mutua-nox-space.jpg" alt="Obra Mutua Nox en espacio de diseño" class="hero-bg-img">
+      <div class="hero-gradient"></div>
     </div>
-
-    <!-- Top: Name & Identity -->
-    <div class="hero-top">
-      <p class="hero-label scroll-fade">Artista plástico & Diseñador</p>
-      <h1 class="hero-title">
-        <span class="title-line scroll-reveal-up">Juan</span>
-        <span class="title-line scroll-reveal-up" style="animation-delay:.15s">Stok</span>
-      </h1>
-    </div>
-
-    <!-- Center: Image + Tagline -->
-    <div class="hero-center">
-      <div class="hero-image-wrapper scroll-scale">
-        <img src="WhatsApp Image 2026-04-05 at 07.06.02.jpeg" alt="Juan Stok pintando en su estudio">
-        <div class="hero-image-overlay"></div>
-      </div>
-    </div>
-
-    <!-- Bottom: Tagline + CTAs -->
-    <div class="hero-bottom">
-      <p class="hero-tagline scroll-fade">"Pintar es mi manera de volver a mí.<br>Entre colores y silencios, el caos se convierte en algo bello."</p>
-      <div class="hero-ctas">
-        <a href="#obras" class="btn btn-primary scroll-reveal-up">Ver catálogo de obras</a>
-        <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Vi%20tu%20web%20y%20me%20interesa%20una%20obra" target="_blank" rel="noopener" class="btn btn-secondary scroll-reveal-up">Quiero una obra personalizada</a>
-      </div>
-      <div class="hero-scroll-hint">
-        <span>Descubrí más</span>
-        <div class="scroll-arrow"></div>
+    <div class="hero-content">
+      <span class="hero-label scroll-fade">Artista plástico & Diseñador</span>
+      <h1 class="hero-title scroll-reveal-up">Juan Stok</h1>
+      <p class="hero-desc scroll-fade">Obras originales que transforman espacios.<br>Arte con filosofía, textura y alma — hecho a medida para vos.</p>
+      <div class="hero-ctas scroll-reveal-up">
+        <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Quiero%20una%20obra%20para%20mi%20espacio" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quiero una obra única
+        </a>
+        <a href="#obras" class="btn btn-ghost">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+          Ver catálogo
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ===== STATEMENT — Frase + Filosofía (Apple sticky text) ===== -->
-  <section class="statement" id="statement">
-    <div class="container">
-      <p class="statement-text">
-        <span class="word-reveal">Cada</span>
-        <span class="word-reveal">pieza</span>
-        <span class="word-reveal">que</span>
-        <span class="word-reveal">creo</span>
-        <span class="word-reveal">es</span>
-        <span class="word-reveal">una</span>
-        <span class="word-reveal">invitación</span>
-        <span class="word-reveal">a</span>
-        <span class="word-reveal">detenerse,</span>
-        <span class="word-reveal">mirar</span>
-        <span class="word-reveal">con</span>
-        <span class="word-reveal">otros</span>
-        <span class="word-reveal">ojos</span>
-        <span class="word-reveal">y</span>
-        <span class="word-reveal">sentir</span>
-        <span class="word-reveal">una</span>
-        <span class="word-reveal">conexión</span>
-        <span class="word-reveal">más</span>
-        <span class="word-reveal">profunda.</span>
-      </p>
-    </div>
-  </section>
-
-  <!-- ===== OBRAS — Catálogo con scroll horizontal Apple-style ===== -->
+  <!-- ===== OBRAS — Netflix-style rows ===== -->
   <section class="section obras" id="obras">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label scroll-fade">Catálogo</span>
-        <h2 class="section-title scroll-reveal-up">Obras originales</h2>
-        <div class="catalogo-filter scroll-fade">
-          <button class="filter-btn active" data-filter="all">Todas</button>
-          <button class="filter-btn" data-filter="disponible">Disponibles</button>
-          <button class="filter-btn" data-filter="vendida">Vendidas</button>
+
+    <!-- Row 1: Destacadas / Disponibles -->
+    <div class="row">
+      <h2 class="row-title scroll-fade">Obras disponibles</h2>
+      <div class="row-container">
+        <button class="row-arrow row-arrow-left" aria-label="Anterior">&#8249;</button>
+        <div class="row-track">
+          <!-- Aurelius -->
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20Aurelius" target="_blank" rel="noopener" class="card">
+            <div class="card-img"><img src="img/aurelius-space.jpg" alt="Aurelius" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Aurelius</h3>
+              <p>Acrílico sobre lienzo — 120x100cm</p>
+              <span class="card-price">US$ 400</span>
+            </div>
+          </a>
+          <!-- Indiga -->
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20Indiga" target="_blank" rel="noopener" class="card">
+            <div class="card-img"><img src="img/indiga-space.jpg" alt="Indiga" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Indiga</h3>
+              <p>Acrílico sobre madera — 150x52cm</p>
+              <span class="card-price">US$ 450</span>
+            </div>
+          </a>
+          <!-- Zenon -->
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20Zenon" target="_blank" rel="noopener" class="card">
+            <div class="card-img"><img src="img/zenon-space.jpg" alt="Zenon" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Zenon</h3>
+              <p>Acrílico, agua y marcadores — 100x60cm</p>
+              <span class="card-price">US$ 200</span>
+            </div>
+          </a>
+          <!-- Laissez-Gentum -->
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20Laissez-Gentum" target="_blank" rel="noopener" class="card">
+            <div class="card-img"><img src="img/laissez-space.jpg" alt="Laissez-Gentum" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Laissez-Gentum</h3>
+              <p>Acrílico sobre tela — 80x60cm</p>
+              <span class="card-price">US$ 120</span>
+            </div>
+          </a>
+          <!-- Martini -->
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20Martini" target="_blank" rel="noopener" class="card">
+            <div class="card-img"><img src="img/martini-space.jpg" alt="Martini" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Martini</h3>
+              <p>Acrílico, agua y marcadores — 100x60cm</p>
+              <span class="card-price">Consultar</span>
+            </div>
+          </a>
+          <!-- Rouge -->
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20Rouge" target="_blank" rel="noopener" class="card">
+            <div class="card-img"><img src="img/rouge-space.jpg" alt="Rouge" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Rouge</h3>
+              <p>Acrílico sobre madera — 60x39cm</p>
+              <span class="card-price">US$ 210</span>
+            </div>
+          </a>
+          <!-- Kundalini -->
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20Kundalini" target="_blank" rel="noopener" class="card">
+            <div class="card-img"><img src="img/kundalini-space.jpg" alt="Kundalini" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Kundalini</h3>
+              <p>Acrílico y pasteles — 100x70cm</p>
+              <span class="card-price">US$ 600</span>
+            </div>
+          </a>
+          <!-- Mutua Nox -->
+          <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20Mutua%20Nox" target="_blank" rel="noopener" class="card">
+            <div class="card-img"><img src="img/mutua-nox-space.jpg" alt="Mutua Nox" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Mutua Nox</h3>
+              <p>Acrílico sobre lienzo — 120x100cm</p>
+              <span class="card-price">US$ 800</span>
+            </div>
+          </a>
         </div>
+        <button class="row-arrow row-arrow-right" aria-label="Siguiente">&#8250;</button>
       </div>
     </div>
-    <div class="obras-scroll-container">
-      <div class="obras-track" id="obrasTrack">
-        <!-- I. Aurelius -->
-        <article class="obra-card" data-category="disponible">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #c9a96e, #8a6914, #2c1810);"><span>I</span></div>
+
+    <!-- Row 2: Colección privada (vendidas) -->
+    <div class="row">
+      <h2 class="row-title scroll-fade">Colección privada</h2>
+      <div class="row-container">
+        <button class="row-arrow row-arrow-left" aria-label="Anterior">&#8249;</button>
+        <div class="row-track">
+          <!-- Cupa Arcana -->
+          <div class="card card-sold">
+            <div class="card-img"><img src="img/cupa-arcana-space.jpg" alt="Cupa Arcana" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Cupa Arcana</h3>
+              <p>Acrílico y vino sobre tela — 60x50cm</p>
+              <span class="card-price sold">Vendida</span>
+            </div>
           </div>
-          <div class="obra-details">
-            <h3>Aurelius</h3>
-            <p class="obra-tech">Acrílico sobre lienzo</p>
-            <p class="obra-dim">120 x 100 cm — 2023</p>
-            <span class="obra-price">US$ 400</span>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Aurelius" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
+          <!-- Catalaxia -->
+          <div class="card card-sold">
+            <div class="card-img"><img src="img/catalaxia-space.jpg" alt="Catalaxia" loading="lazy"></div>
+            <div class="card-info">
+              <h3>Catalaxia</h3>
+              <p>Acrílico y enduido sobre lienzo — 90x130cm</p>
+              <span class="card-price sold">Vendida</span>
+            </div>
           </div>
-        </article>
-        <!-- II. Indiga -->
-        <article class="obra-card" data-category="disponible">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #1a0a3e, #2d1b69, #4b0082);"><span>II</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Indiga</h3>
-            <p class="obra-tech">Acrílico sobre madera</p>
-            <p class="obra-dim">150 x 52 cm — 2024</p>
-            <span class="obra-price">US$ 450</span>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Indiga" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
-          </div>
-        </article>
-        <!-- III. Zenon -->
-        <article class="obra-card" data-category="disponible">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #0d1b2a, #1b263b, #415a77);"><span>III</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Zenon</h3>
-            <p class="obra-tech">Acrílico, agua y marcadores sobre lienzo</p>
-            <p class="obra-dim">100 x 60 cm — 2024</p>
-            <span class="obra-price">US$ 200</span>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Zenon" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
-          </div>
-        </article>
-        <!-- IV. Laissez-Gentum -->
-        <article class="obra-card" data-category="disponible">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #2c3e50, #34495e, #5d6d7e);"><span>IV</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Laissez-Gentum</h3>
-            <p class="obra-tech">Acrílico sobre tela</p>
-            <p class="obra-dim">80 x 60 cm — 2023</p>
-            <span class="obra-price">US$ 120</span>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Laissez-Gentum" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
-          </div>
-        </article>
-        <!-- V. Cupa Arcana -->
-        <article class="obra-card" data-category="vendida">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #4a0e0e, #722f37, #8b0000);"><span>V</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Cupa Arcana</h3>
-            <p class="obra-tech">Acrílico y vino sobre tela</p>
-            <p class="obra-dim">60 x 50 cm — 2024</p>
-            <span class="obra-price sold">Vendida</span>
-          </div>
-        </article>
-        <!-- VI. Martini -->
-        <article class="obra-card" data-category="disponible">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #1a1a2e, #16213e, #0f3460);"><span>VI</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Martini</h3>
-            <p class="obra-tech">Acrílico, agua y marcadores sobre lienzo</p>
-            <p class="obra-dim">100 x 60 cm — 2024</p>
-            <span class="obra-price">Consultar precio</span>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Martini" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
-          </div>
-        </article>
-        <!-- VII. Rouge -->
-        <article class="obra-card" data-category="disponible">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #8b0000, #c72c41, #d4456a);"><span>VII</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Rouge</h3>
-            <p class="obra-tech">Acrílico, agua y marcadores sobre madera</p>
-            <p class="obra-dim">60 x 39 cm — 2024</p>
-            <span class="obra-price">US$ 210</span>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Rouge" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
-          </div>
-        </article>
-        <!-- VIII. Kundalini -->
-        <article class="obra-card" data-category="disponible">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #ff6b35, #c44536, #772e25);"><span>VIII</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Kundalini</h3>
-            <p class="obra-tech">Acrílico y pasteles sobre lienzo</p>
-            <p class="obra-dim">100 x 70 cm — 2024</p>
-            <span class="obra-price">US$ 600</span>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Kundalini" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
-          </div>
-        </article>
-        <!-- IX. Catalaxia -->
-        <article class="obra-card" data-category="vendida">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #2d132c, #4a1942, #801336);"><span>IX</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Catalaxia</h3>
-            <p class="obra-tech">Acrílico y enduido sobre lienzo</p>
-            <p class="obra-dim">90 x 130 cm — 2025</p>
-            <span class="obra-price sold">Vendida</span>
-          </div>
-        </article>
-        <!-- X. Mutua Nox -->
-        <article class="obra-card" data-category="disponible">
-          <div class="obra-visual">
-            <div class="obra-placeholder" style="background: linear-gradient(160deg, #0c0c1d, #1a1a3e, #2d2d5e);"><span>X</span></div>
-          </div>
-          <div class="obra-details">
-            <h3>Mutua Nox</h3>
-            <p class="obra-tech">Acrílico sobre lienzo</p>
-            <p class="obra-dim">120 x 100 cm — 2025</p>
-            <span class="obra-price">US$ 800</span>
-            <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Me%20interesa%20la%20obra%20Mutua%20Nox" target="_blank" rel="noopener" class="obra-cta">Consultar</a>
-          </div>
-        </article>
+        </div>
+        <button class="row-arrow row-arrow-right" aria-label="Siguiente">&#8250;</button>
       </div>
     </div>
-    <!-- CTA after catalog -->
-    <div class="container">
-      <div class="obras-bottom-cta scroll-reveal-up">
-        <p>¿Buscás algo único, hecho a tu medida?</p>
-        <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Quiero%20una%20obra%20personalizada" target="_blank" rel="noopener" class="btn btn-primary">Pedí tu obra personalizada</a>
+
+    <!-- CTA band -->
+    <div class="cta-band scroll-reveal-up">
+      <div class="cta-band-content">
+        <h3>¿Querés una obra a tu medida?</h3>
+        <p>Contame sobre tu espacio y creo una pieza única para vos.</p>
+        <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Quiero%20una%20obra%20personalizada%20para%20mi%20espacio" target="_blank" rel="noopener" class="btn btn-primary">Pedí tu obra personalizada</a>
       </div>
     </div>
+
   </section>
 
   <!-- ===== SERVICIOS — Compact ===== -->
   <section class="section servicios" id="servicios">
     <div class="container">
-      <span class="section-label scroll-fade">Servicios</span>
       <h2 class="section-title scroll-reveal-up">Cómo trabajo</h2>
       <div class="servicios-grid">
         <div class="servicio-card scroll-reveal-up">
           <span class="servicio-number">01</span>
           <h3>Colaboraciones</h3>
-          <p>Obras únicas y a medida. Escucho tu historia, interpreto tu visión y creo una pieza que se integra a tu espacio como una expresión auténtica.</p>
+          <p>Obras únicas hechas a medida. Escucho tu historia, interpreto tu visión y creo una pieza que narre tu historia personal.</p>
         </div>
-        <div class="servicio-card scroll-reveal-up" style="animation-delay:.1s">
+        <div class="servicio-card scroll-reveal-up">
           <span class="servicio-number">02</span>
           <h3>Ciclo Performático</h3>
-          <p>Creo obra en tiempo real, frente al público. Una experiencia única donde el espectador es testigo del proceso creativo y la energía compartida.</p>
+          <p>Creo obra en tiempo real, frente al público. Una experiencia donde el espectador es testigo del proceso creativo.</p>
         </div>
-        <div class="servicio-card scroll-reveal-up" style="animation-delay:.2s">
+        <div class="servicio-card scroll-reveal-up">
           <span class="servicio-number">03</span>
           <h3>Arte & Interiorismo</h3>
-          <p>Piezas pensadas para dialogar con la arquitectura y el diseño de interiores. Arte que eleva espacios residenciales, comerciales y corporativos.</p>
+          <p>Piezas pensadas para dialogar con la arquitectura. Arte que eleva espacios residenciales, comerciales y corporativos.</p>
         </div>
       </div>
     </div>
@@ -280,8 +210,7 @@
   <!-- ===== CLIENTES ===== -->
   <section class="section clientes" id="clientes">
     <div class="container">
-      <span class="section-label scroll-fade">Testimonios</span>
-      <h2 class="section-title scroll-reveal-up">Clientes</h2>
+      <h2 class="section-title scroll-reveal-up">Lo que dicen mis clientes</h2>
       <div class="clientes-carousel">
         <div class="clientes-track" id="clientesTrack">
           <div class="cliente-card">
@@ -324,12 +253,11 @@
     </div>
   </section>
 
-  <!-- ===== CONTACTO — Compact ===== -->
+  <!-- ===== CONTACTO ===== -->
   <section class="section contacto" id="contacto">
     <div class="container">
       <div class="contacto-layout">
         <div class="contacto-left">
-          <span class="section-label scroll-fade">Contacto</span>
           <h2 class="section-title scroll-reveal-up">¿Transformamos<br>tu espacio?</h2>
           <p class="scroll-fade">Escribime y empecemos a crear algo único juntos.</p>
           <div class="contacto-info scroll-fade">
@@ -352,20 +280,17 @@
             <div class="form-group">
               <select id="asunto" name="asunto" required>
                 <option value="" disabled selected>¿En qué puedo ayudarte?</option>
-                <option value="obra-personalizada">Quiero una obra personalizada</option>
-                <option value="consulta-catalogo">Me interesa una obra del catálogo</option>
-                <option value="ciclo-performatico">Ciclo performático / Evento</option>
-                <option value="otro">Otro</option>
+                <option value="Quiero una obra personalizada">Quiero una obra personalizada</option>
+                <option value="Me interesa una obra del catálogo">Me interesa una obra del catálogo</option>
+                <option value="Ciclo performático / Evento">Ciclo performático / Evento</option>
+                <option value="Otro">Otro</option>
               </select>
             </div>
             <div class="form-group">
               <textarea id="mensaje" name="mensaje" rows="3" required placeholder=" "></textarea>
               <label for="mensaje">Mensaje</label>
             </div>
-            <button type="submit" class="form-submit">
-              <span>Enviar</span>
-              <span class="submit-arrow">&rarr;</span>
-            </button>
+            <button type="submit" class="form-submit">Enviar <span class="submit-arrow">&rarr;</span></button>
           </form>
         </div>
       </div>
@@ -374,21 +299,19 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <a href="#hero" class="footer-logo">STOK<span class="accent">.</span></a>
-        <div class="footer-social">
-          <a href="https://instagram.com/jnstok" target="_blank" rel="noopener">IG</a>
-          <a href="mailto:juanstoky@gmail.com">EM</a>
-          <a href="https://wa.me/5491161592163" target="_blank" rel="noopener">WA</a>
-        </div>
-        <p class="footer-copy">&copy; 2026 Juan Stok</p>
+    <div class="container footer-content">
+      <a href="#hero" class="footer-logo">STOK<span class="accent">.</span></a>
+      <div class="footer-social">
+        <a href="https://instagram.com/jnstok" target="_blank" rel="noopener">IG</a>
+        <a href="mailto:juanstoky@gmail.com">EM</a>
+        <a href="https://wa.me/5491161592163" target="_blank" rel="noopener">WA</a>
       </div>
+      <p class="footer-copy">&copy; 2026 Juan Stok</p>
     </div>
   </footer>
 
   <!-- FAB WhatsApp -->
-  <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Vi%20tu%20web%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="fab-whatsapp" id="fabWa" aria-label="Contactar por WhatsApp">
+  <a href="https://wa.me/5491161592163?text=Hola%20Juan!%20Vi%20tu%20web%20y%20quiero%20saber%20más" target="_blank" rel="noopener" class="fab-whatsapp" id="fabWa" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
