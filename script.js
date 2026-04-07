@@ -471,7 +471,6 @@ function initScrollExpand() {
     media.style.width = w + 'px';
     media.style.height = h + 'px';
     media.style.borderRadius = radius + 'px';
-    media.style.clipPath = `inset(0 round ${radius}px)`;
     media.style.boxShadow = expandP < 1
       ? `0 ${20 * (1 - expandP)}px ${60 * (1 - expandP)}px rgba(0,0,0,${0.4 * (1 - expandP)})`
       : 'none';

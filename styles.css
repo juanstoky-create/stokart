@@ -206,16 +206,15 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   width: 420px; height: 530px;
   border-radius: 18px;
   overflow: hidden;
-  clip-path: inset(0 round 18px);
-  background: #0a0a0a url('img/marmol.jpg') center/cover no-repeat;
+  background: url('img/marmol.jpg') center/cover no-repeat;
   box-shadow: 0 20px 60px rgba(0,0,0,.4);
-  will-change: width, height, border-radius, clip-path;
+  will-change: width, height, border-radius;
 }
 
 /* Dark overlay on marble */
 .se-marble-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: rgba(10,10,10,.7);
+  background: rgba(10,10,10,.55);
   pointer-events: none;
 }
 
