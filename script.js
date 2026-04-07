@@ -22,6 +22,7 @@ function init() {
   initBeforeAfter();
   initServicioClicks();
   initVisualizador();
+  initScrollExpand();
 }
 
 /* ===== BIO MODAL ===== */
@@ -458,6 +459,64 @@ function initVisualizador() {
   function item(label, value) {
     return `<div class="viz-summary-item"><span class="viz-summary-label">${label}</span><span class="viz-summary-value">${value}</span></div>`;
   }
+}
+
+/* ===== SCROLL EXPANSION ===== */
+function initScrollExpand() {
+  const section = document.getElementById('scrollExpand');
+  if (!section) return;
+
+  const media = document.getElementById('seMedia');
+  const wordL = document.getElementById('seWordLeft');
+  const wordR = document.getElementById('seWordRight');
+  const hint = document.getElementById('seHint');
+  const bgImg = section.querySelector('.se-bg-img');
+  const isMobile = window.innerWidth < 768;
+
+  // Sizes
+  const startW = isMobile ? 200 : 280;
+  const startH = isMobile ? 260 : 360;
+
+  window.addEventListener('scroll', () => {
+    const rect = section.getBoundingClientRect();
+    const sectionH = section.offsetHeight;
+    const vh = window.innerHeight;
+
+    // Progress: 0 when section top hits viewport top, 1 when section bottom hits viewport bottom
+    const scrolled = -rect.top;
+    const total = sectionH - vh;
+    if (total <= 0) return;
+
+    const p = Math.max(0, Math.min(1, scrolled / total));
+
+    // Media expansion: starts at small rect, ends full viewport
+    const vw = window.innerWidth;
+    const w = startW + p * (vw - startW);
+    const h = startH + p * (vh - startH);
+    const radius = 16 * (1 - p);
+
+    media.style.width = w + 'px';
+    media.style.height = h + 'px';
+    media.style.borderRadius = radius + 'px';
+
+    // Text slides apart
+    const tx = p * (isMobile ? 120 : 200);
+    const textOpacity = Math.max(0, 1 - p * 2.5);
+    wordL.style.transform = `translateX(-${tx}px)`;
+    wordR.style.transform = `translateX(${tx}px)`;
+    wordL.style.opacity = textOpacity;
+    wordR.style.opacity = textOpacity;
+
+    // Hint fades
+    hint.style.opacity = Math.max(0, 1 - p * 4);
+
+    // Background fades
+    bgImg.style.opacity = 0.15 * (1 - p);
+
+    // Overlay darkens then lightens at end
+    const overlayOpacity = p < 0.5 ? p * 0.6 : 0.3 * (1 - (p - 0.5) * 2);
+    media.style.boxShadow = `0 ${20 * (1 - p)}px ${60 * (1 - p)}px rgba(0,0,0,${0.5 * (1 - p)})`;
+  }, { passive: true });
 }
 
 function initForm() {
