@@ -424,14 +424,15 @@ function initScrollExpand() {
   if (!section) return;
 
   const media = document.getElementById('seMedia');
+  const stickyOverlay = document.getElementById('seStickyOverlay');
   const title = document.getElementById('seTitle');
   const subtitle = document.getElementById('seSubtitle');
   const gallery = document.getElementById('seGallery');
   const hint = document.getElementById('seHint');
   const isMobile = window.innerWidth < 768;
 
-  const startW = isMobile ? 220 : 300;
-  const startH = isMobile ? 280 : 380;
+  const startW = isMobile ? 300 : 420;
+  const startH = isMobile ? 390 : 530;
 
   // Init row arrows inside gallery
   const rowContainer = section.querySelector('.se-row-container');
@@ -506,6 +507,9 @@ function initScrollExpand() {
 
     // --- Hint fades out quickly ---
     hint.style.opacity = Math.max(0, 1 - p * 5);
+
+    // --- Sticky overlay fades out so marble bg shows seamlessly ---
+    stickyOverlay.style.opacity = Math.max(0, 1 - expandP * 1.5);
   }, { passive: true });
 
   // Init dots for gallery

@@ -191,13 +191,22 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   position: sticky; top: 0;
   height: 100vh; width: 100%;
   display: flex; align-items: center; justify-content: center;
-  overflow: hidden; background: var(--bg);
+  overflow: hidden;
+  background: #0a0a0a url('img/marmol.jpg') center/cover no-repeat;
 }
 
-/* Expanding white gallery card */
+/* Sticky overlay: starts fully opaque (hides marble), fades out as card expands */
+.se-sticky-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: var(--bg);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* Expanding gallery card */
 .se-media {
   position: absolute; z-index: 2;
-  width: 300px; height: 380px;
+  width: 420px; height: 530px;
   border-radius: 18px;
   overflow: hidden;
   clip-path: inset(0 round 18px);
