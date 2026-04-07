@@ -262,19 +262,187 @@
     </div>
   </div>
 
-  <!-- ===== SCROLL EXPANSION TRANSITION ===== -->
+  <!-- ===== SCROLL EXPANSION — GALERÍA ===== -->
   <section class="scroll-expand" id="scrollExpand">
     <div class="se-sticky">
-      <div class="se-bg">
-        <img src="img/painting-detail.jpg" alt="Detalle de obra" class="se-bg-img">
-      </div>
+      <!-- Expanding white gallery card -->
       <div class="se-media" id="seMedia">
-        <img src="img/texture-detail.jpg" alt="Textura artística">
+        <!-- Title: starts large/centered, morphs to small/top-left -->
+        <h2 class="se-title" id="seTitle">Obras originales</h2>
+        <p class="se-subtitle" id="seSubtitle">Cada pieza, una historia</p>
+
+        <!-- Gallery content: cards row embedded inside -->
+        <div class="se-gallery" id="seGallery">
+          <div class="se-row-container">
+            <button class="row-arrow row-arrow-left" aria-label="Anterior">&#8249;</button>
+            <div class="row-track">
+
+              <!-- Aurelius -->
+              <div class="card" data-wa="Hola Juan, me interesa la obra Aurelius. ¿Podemos conversar?">
+                <div class="card-img">
+                  <img src="img/aurelius-space.jpg" alt="Aurelius en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Aurelius</h3>
+                  <span class="card-dim">120 x 100 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico sobre lienzo — 2023</span>
+                  <span class="card-price">US$ 400</span>
+                  <span class="card-cta">Consultar disponibilidad &rarr;</span>
+                </div>
+              </div>
+
+              <!-- Indiga -->
+              <div class="card" data-wa="Hola Juan, me interesa la obra Indiga. ¿Podemos conversar?">
+                <div class="card-img">
+                  <img src="img/indiga-space.jpg" alt="Indiga en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Indiga</h3>
+                  <span class="card-dim">150 x 52 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico sobre madera — 2024</span>
+                  <span class="card-price">US$ 450</span>
+                  <span class="card-cta">Consultar disponibilidad &rarr;</span>
+                </div>
+              </div>
+
+              <!-- Zenon -->
+              <div class="card" data-wa="Hola Juan, me interesa la obra Zenon. ¿Podemos conversar?">
+                <div class="card-img">
+                  <img src="img/zenon-space.jpg" alt="Zenon en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Zenon</h3>
+                  <span class="card-dim">100 x 60 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico, agua y marcadores — 2024</span>
+                  <span class="card-price">US$ 200</span>
+                  <span class="card-cta">Consultar disponibilidad &rarr;</span>
+                </div>
+              </div>
+
+              <!-- Laissez-Gentum -->
+              <div class="card" data-wa="Hola Juan, me interesa la obra Laissez-Gentum. ¿Podemos conversar?">
+                <div class="card-img">
+                  <img src="img/laissez-space.jpg" alt="Laissez-Gentum en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Laissez-Gentum</h3>
+                  <span class="card-dim">80 x 60 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico sobre tela — 2023</span>
+                  <span class="card-price">US$ 120</span>
+                  <span class="card-cta">Consultar disponibilidad &rarr;</span>
+                </div>
+              </div>
+
+              <!-- Cupa Arcana (vendida) -->
+              <div class="card card-sold">
+                <div class="card-img">
+                  <img src="img/cupa-arcana-space.jpg" alt="Cupa Arcana en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Cupa Arcana</h3>
+                  <span class="card-dim">60 x 50 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico y vino sobre tela — 2024</span>
+                  <span class="card-price sold">Vendida — Colección privada</span>
+                </div>
+              </div>
+
+              <!-- Martini -->
+              <div class="card" data-wa="Hola Juan, me interesa la obra Martini. ¿Podemos conversar?">
+                <div class="card-img">
+                  <img src="img/martini-space.jpg" alt="Martini en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Martini</h3>
+                  <span class="card-dim">100 x 60 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico, agua y marcadores — 2024</span>
+                  <span class="card-price">Consultar precio</span>
+                  <span class="card-cta">Consultar disponibilidad &rarr;</span>
+                </div>
+              </div>
+
+              <!-- Rouge -->
+              <div class="card" data-wa="Hola Juan, me interesa la obra Rouge. ¿Podemos conversar?">
+                <div class="card-img">
+                  <img src="img/rouge-space.jpg" alt="Rouge en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Rouge</h3>
+                  <span class="card-dim">60 x 39 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico, agua y marcadores sobre madera — 2024</span>
+                  <span class="card-price">US$ 210</span>
+                  <span class="card-cta">Consultar disponibilidad &rarr;</span>
+                </div>
+              </div>
+
+              <!-- Kundalini -->
+              <div class="card" data-wa="Hola Juan, me interesa la obra Kundalini. ¿Podemos conversar?">
+                <div class="card-img">
+                  <img src="img/kundalini-space.jpg" alt="Kundalini en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Kundalini</h3>
+                  <span class="card-dim">100 x 70 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico y pasteles sobre lienzo — 2024</span>
+                  <span class="card-price">US$ 600</span>
+                  <span class="card-cta">Consultar disponibilidad &rarr;</span>
+                </div>
+              </div>
+
+              <!-- Catalaxia (vendida) -->
+              <div class="card card-sold">
+                <div class="card-img">
+                  <img src="img/catalaxia-space.jpg" alt="Catalaxia en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Catalaxia</h3>
+                  <span class="card-dim">90 x 130 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico y enduido sobre lienzo — 2025</span>
+                  <span class="card-price sold">Vendida — Colección privada</span>
+                </div>
+              </div>
+
+              <!-- Mutua Nox -->
+              <div class="card" data-wa="Hola Juan, me interesa la obra Mutua Nox. ¿Podemos conversar?">
+                <div class="card-img">
+                  <img src="img/mutua-nox-space.jpg" alt="Mutua Nox en espacio" class="card-img-space" loading="lazy">
+                </div>
+                <div class="card-base">
+                  <h3>Mutua Nox</h3>
+                  <span class="card-dim">120 x 100 cm</span>
+                </div>
+                <div class="card-hover">
+                  <span class="card-tech">Acrílico sobre lienzo — 2025</span>
+                  <span class="card-price">US$ 800</span>
+                  <span class="card-cta">Consultar disponibilidad &rarr;</span>
+                </div>
+              </div>
+
+            </div>
+            <button class="row-arrow row-arrow-right" aria-label="Siguiente">&#8250;</button>
+          </div>
+          <div class="row-dots" id="obrasDots"></div>
+        </div>
       </div>
-      <div class="se-text">
-        <span class="se-word se-word-left" id="seWordLeft">Obras</span>
-        <span class="se-word se-word-right" id="seWordRight">originales</span>
-      </div>
+
+      <!-- Hint -->
       <div class="se-hint" id="seHint">
         <span>Deslizá para descubrir</span>
         <div class="scroll-line"><div class="scroll-dot"></div></div>
@@ -282,178 +450,8 @@
     </div>
   </section>
 
-  <!-- ===== OBRAS — Catálogo unificado ===== -->
+  <!-- ===== OBRAS A MEDIDA ===== -->
   <section class="section obras" id="obras">
-
-    <div class="row">
-      <h2 class="row-title scroll-fade">Cada pieza, una historia</h2>
-      <div class="row-container">
-        <button class="row-arrow row-arrow-left" aria-label="Anterior">&#8249;</button>
-        <div class="row-track">
-
-          <!-- Aurelius -->
-          <div class="card" data-wa="Hola Juan, me interesa la obra Aurelius. ¿Podemos conversar?">
-            <div class="card-img">
-              <img src="img/aurelius-space.jpg" alt="Aurelius en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Aurelius</h3>
-              <span class="card-dim">120 x 100 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico sobre lienzo — 2023</span>
-              <span class="card-price">US$ 400</span>
-              <span class="card-cta">Consultar disponibilidad &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Indiga -->
-          <div class="card" data-wa="Hola Juan, me interesa la obra Indiga. ¿Podemos conversar?">
-            <div class="card-img">
-              <img src="img/indiga-space.jpg" alt="Indiga en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Indiga</h3>
-              <span class="card-dim">150 x 52 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico sobre madera — 2024</span>
-              <span class="card-price">US$ 450</span>
-              <span class="card-cta">Consultar disponibilidad &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Zenon -->
-          <div class="card" data-wa="Hola Juan, me interesa la obra Zenon. ¿Podemos conversar?">
-            <div class="card-img">
-              <img src="img/zenon-space.jpg" alt="Zenon en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Zenon</h3>
-              <span class="card-dim">100 x 60 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico, agua y marcadores — 2024</span>
-              <span class="card-price">US$ 200</span>
-              <span class="card-cta">Consultar disponibilidad &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Laissez-Gentum -->
-          <div class="card" data-wa="Hola Juan, me interesa la obra Laissez-Gentum. ¿Podemos conversar?">
-            <div class="card-img">
-              <img src="img/laissez-space.jpg" alt="Laissez-Gentum en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Laissez-Gentum</h3>
-              <span class="card-dim">80 x 60 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico sobre tela — 2023</span>
-              <span class="card-price">US$ 120</span>
-              <span class="card-cta">Consultar disponibilidad &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Cupa Arcana (vendida) -->
-          <div class="card card-sold">
-            <div class="card-img">
-              <img src="img/cupa-arcana-space.jpg" alt="Cupa Arcana en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Cupa Arcana</h3>
-              <span class="card-dim">60 x 50 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico y vino sobre tela — 2024</span>
-              <span class="card-price sold">Vendida — Colección privada</span>
-            </div>
-          </div>
-
-          <!-- Martini -->
-          <div class="card" data-wa="Hola Juan, me interesa la obra Martini. ¿Podemos conversar?">
-            <div class="card-img">
-              <img src="img/martini-space.jpg" alt="Martini en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Martini</h3>
-              <span class="card-dim">100 x 60 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico, agua y marcadores — 2024</span>
-              <span class="card-price">Consultar precio</span>
-              <span class="card-cta">Consultar disponibilidad &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Rouge -->
-          <div class="card" data-wa="Hola Juan, me interesa la obra Rouge. ¿Podemos conversar?">
-            <div class="card-img">
-              <img src="img/rouge-space.jpg" alt="Rouge en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Rouge</h3>
-              <span class="card-dim">60 x 39 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico, agua y marcadores sobre madera — 2024</span>
-              <span class="card-price">US$ 210</span>
-              <span class="card-cta">Consultar disponibilidad &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Kundalini -->
-          <div class="card" data-wa="Hola Juan, me interesa la obra Kundalini. ¿Podemos conversar?">
-            <div class="card-img">
-              <img src="img/kundalini-space.jpg" alt="Kundalini en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Kundalini</h3>
-              <span class="card-dim">100 x 70 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico y pasteles sobre lienzo — 2024</span>
-              <span class="card-price">US$ 600</span>
-              <span class="card-cta">Consultar disponibilidad &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Catalaxia (vendida) -->
-          <div class="card card-sold">
-            <div class="card-img">
-              <img src="img/catalaxia-space.jpg" alt="Catalaxia en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Catalaxia</h3>
-              <span class="card-dim">90 x 130 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico y enduido sobre lienzo — 2025</span>
-              <span class="card-price sold">Vendida — Colección privada</span>
-            </div>
-          </div>
-
-          <!-- Mutua Nox -->
-          <div class="card" data-wa="Hola Juan, me interesa la obra Mutua Nox. ¿Podemos conversar?">
-            <div class="card-img">
-              <img src="img/mutua-nox-space.jpg" alt="Mutua Nox en espacio" class="card-img-space" loading="lazy">
-            </div>
-            <div class="card-base">
-              <h3>Mutua Nox</h3>
-              <span class="card-dim">120 x 100 cm</span>
-            </div>
-            <div class="card-hover">
-              <span class="card-tech">Acrílico sobre lienzo — 2025</span>
-              <span class="card-price">US$ 800</span>
-              <span class="card-cta">Consultar disponibilidad &rarr;</span>
-            </div>
-          </div>
-
-        </div>
-        <button class="row-arrow row-arrow-right" aria-label="Siguiente">&#8250;</button>
-      </div>
-      <div class="row-dots" id="obrasDots"></div>
-    </div>
 
     <!-- ===== OBRA A MEDIDA — Before/After ===== -->
     <div class="custom-work scroll-reveal-up">

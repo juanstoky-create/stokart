@@ -11,8 +11,7 @@ document.body.style.overflow = 'hidden';
 function init() {
   initNav();
   initScrollReveal();
-  initRowArrows();
-  initRowDots();
+  /* Row arrows + dots now handled inside initScrollExpand */
   initCarousel();
   initFAB();
   initForm();
@@ -114,24 +113,7 @@ function initScrollReveal() {
   els.forEach(el => obs.observe(el));
 }
 
-/* ===== ROW ARROWS (Netflix scroll) ===== */
-function initRowArrows() {
-  document.querySelectorAll('.row-container').forEach(container => {
-    const track = container.querySelector('.row-track');
-    const left = container.querySelector('.row-arrow-left');
-    const right = container.querySelector('.row-arrow-right');
-    if (!track) return;
-
-    const scrollAmount = () => track.clientWidth * 0.75;
-
-    if (left) left.addEventListener('click', () => {
-      track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
-    });
-    if (right) right.addEventListener('click', () => {
-      track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
-    });
-  });
-}
+/* Row arrows are now initialized inside initScrollExpand */
 
 /* ===== CAROUSEL ===== */
 function initCarousel() {
@@ -188,32 +170,7 @@ function initFAB() {
   obs.observe(document.getElementById('hero'));
 }
 
-/* ===== FORM → WhatsApp ===== */
-/* --- Row scroll dots --- */
-function initRowDots() {
-  const track = document.querySelector('.row-track');
-  const dotsContainer = document.getElementById('obrasDots');
-  if (!track || !dotsContainer) return;
-
-  const cards = track.querySelectorAll('.card');
-  const totalCards = cards.length;
-  const dotsCount = Math.min(totalCards, 10);
-
-  for (let i = 0; i < dotsCount; i++) {
-    const dot = document.createElement('div');
-    dot.classList.add('row-dot');
-    if (i === 0) dot.classList.add('active');
-    dotsContainer.appendChild(dot);
-  }
-
-  const dots = dotsContainer.querySelectorAll('.row-dot');
-
-  track.addEventListener('scroll', () => {
-    const scrollPct = track.scrollLeft / (track.scrollWidth - track.clientWidth);
-    const activeIndex = Math.round(scrollPct * (dotsCount - 1));
-    dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
-  }, { passive: true });
-}
+/* Row dots are now initialized inside initScrollExpand */
 
 /* --- Servicio card clicks → WhatsApp --- */
 function initServicioClicks() {
@@ -461,62 +418,111 @@ function initVisualizador() {
   }
 }
 
-/* ===== SCROLL EXPANSION ===== */
+/* ===== SCROLL EXPANSION — GALERÍA ===== */
 function initScrollExpand() {
   const section = document.getElementById('scrollExpand');
   if (!section) return;
 
   const media = document.getElementById('seMedia');
-  const wordL = document.getElementById('seWordLeft');
-  const wordR = document.getElementById('seWordRight');
+  const title = document.getElementById('seTitle');
+  const subtitle = document.getElementById('seSubtitle');
+  const gallery = document.getElementById('seGallery');
   const hint = document.getElementById('seHint');
-  const bgImg = section.querySelector('.se-bg-img');
   const isMobile = window.innerWidth < 768;
 
-  // Sizes
-  const startW = isMobile ? 200 : 280;
-  const startH = isMobile ? 260 : 360;
+  const startW = isMobile ? 220 : 300;
+  const startH = isMobile ? 280 : 380;
+
+  // Init row arrows inside gallery
+  const rowContainer = section.querySelector('.se-row-container');
+  if (rowContainer) {
+    const track = rowContainer.querySelector('.row-track');
+    const left = rowContainer.querySelector('.row-arrow-left');
+    const right = rowContainer.querySelector('.row-arrow-right');
+    if (track && left && right) {
+      const scrollAmt = () => track.clientWidth * 0.75;
+      left.addEventListener('click', () => track.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }));
+      right.addEventListener('click', () => track.scrollBy({ left: scrollAmt(), behavior: 'smooth' }));
+    }
+  }
 
   window.addEventListener('scroll', () => {
     const rect = section.getBoundingClientRect();
     const sectionH = section.offsetHeight;
     const vh = window.innerHeight;
+    const vw = window.innerWidth;
 
-    // Progress: 0 when section top hits viewport top, 1 when section bottom hits viewport bottom
     const scrolled = -rect.top;
     const total = sectionH - vh;
     if (total <= 0) return;
 
     const p = Math.max(0, Math.min(1, scrolled / total));
 
-    // Media expansion: starts at small rect, ends full viewport
-    const vw = window.innerWidth;
-    const w = startW + p * (vw - startW);
-    const h = startH + p * (vh - startH);
-    const radius = 16 * (1 - p);
+    // Phase 1 (0→0.6): Card expands from small to fullscreen
+    // Phase 2 (0.6→1): Gallery content fades in, title shrinks to top-left
+    const expandP = Math.min(1, p / 0.6);
+    const revealP = Math.max(0, (p - 0.55) / 0.45);
+
+    // --- Card expansion ---
+    const w = startW + expandP * (vw - startW);
+    const h = startH + expandP * (vh - startH);
+    const radius = 18 * (1 - expandP);
+    const shadow = 0.4 * (1 - expandP);
 
     media.style.width = w + 'px';
     media.style.height = h + 'px';
     media.style.borderRadius = radius + 'px';
+    media.style.boxShadow = expandP < 1
+      ? `0 ${20 * (1 - expandP)}px ${60 * (1 - expandP)}px rgba(0,0,0,${shadow})`
+      : 'none';
 
-    // Text slides apart
-    const tx = p * (isMobile ? 120 : 200);
-    const textOpacity = Math.max(0, 1 - p * 2.5);
-    wordL.style.transform = `translateX(-${tx}px)`;
-    wordR.style.transform = `translateX(${tx}px)`;
-    wordL.style.opacity = textOpacity;
-    wordR.style.opacity = textOpacity;
+    // --- Title morph: large/centered → small/top-left ---
+    const titleSize = isMobile
+      ? 2.2 - revealP * 0.9
+      : 3.5 - revealP * 2.1;
+    const titleX = revealP * (isMobile ? -25 : -38);
+    const titleY = revealP * (isMobile ? -35 : -42);
 
-    // Hint fades
-    hint.style.opacity = Math.max(0, 1 - p * 4);
+    title.style.fontSize = titleSize + 'rem';
+    title.style.transform = `translate(${titleX}%, ${titleY}vh)`;
+    title.style.textAlign = revealP > 0.5 ? 'left' : 'center';
 
-    // Background fades
-    bgImg.style.opacity = 0.15 * (1 - p);
+    // --- Subtitle appears when title is small ---
+    subtitle.style.opacity = Math.max(0, (revealP - 0.6) / 0.4);
+    subtitle.style.transform = `translate(${titleX}%, calc(${titleY}vh + ${titleSize + 1}rem))`;
 
-    // Overlay darkens then lightens at end
-    const overlayOpacity = p < 0.5 ? p * 0.6 : 0.3 * (1 - (p - 0.5) * 2);
-    media.style.boxShadow = `0 ${20 * (1 - p)}px ${60 * (1 - p)}px rgba(0,0,0,${0.5 * (1 - p)})`;
+    // --- Gallery cards reveal ---
+    if (revealP > 0.1) {
+      gallery.classList.add('visible');
+      gallery.style.opacity = Math.min(1, (revealP - 0.1) / 0.5);
+    } else {
+      gallery.classList.remove('visible');
+      gallery.style.opacity = 0;
+    }
+
+    // --- Hint fades out quickly ---
+    hint.style.opacity = Math.max(0, 1 - p * 5);
   }, { passive: true });
+
+  // Init dots for gallery
+  const track = section.querySelector('.row-track');
+  const dotsContainer = document.getElementById('obrasDots');
+  if (track && dotsContainer) {
+    const cards = track.querySelectorAll('.card');
+    const dotsCount = Math.min(cards.length, 10);
+    for (let i = 0; i < dotsCount; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('row-dot');
+      if (i === 0) dot.classList.add('active');
+      dotsContainer.appendChild(dot);
+    }
+    const dots = dotsContainer.querySelectorAll('.row-dot');
+    track.addEventListener('scroll', () => {
+      const scrollPct = track.scrollLeft / (track.scrollWidth - track.clientWidth);
+      const activeIndex = Math.round(scrollPct * (dotsCount - 1));
+      dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+    }, { passive: true });
+  }
 }
 
 function initForm() {
