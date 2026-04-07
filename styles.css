@@ -233,7 +233,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .se-gallery {
   position: absolute; z-index: 3;
   left: 0; right: 0;
-  top: 50%; transform: translateY(-35%);
+  top: 55%; transform: translateY(-30%);
   opacity: 0;
   visibility: hidden;
   will-change: opacity;
@@ -250,26 +250,34 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 }
 
 /* Cards inside gallery: LIGHT gallery aesthetic */
-.se-gallery .card {
-  background: #fff;
-  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+.se-media .card {
+  background: #fff !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,.07);
   border: 1px solid rgba(0,0,0,.06);
-}
-.se-gallery .card:hover {
-  transform: scale(1.04) translateY(-6px);
-  box-shadow: 0 12px 35px rgba(0,0,0,.15);
-}
-.se-gallery .card-base h3 {
   color: #1a1a1a;
+}
+.se-media .card:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0,0,0,.12);
+}
+.se-media .card-base {
+  background: #fff;
+}
+.se-media .card-base h3 {
+  color: #1a1a1a !important;
   font-weight: 600;
   font-size: 1.25rem;
 }
-.se-gallery .card-dim { color: #888; }
-.se-gallery .card-hover { color: #1a1a1a; }
-.se-gallery .card-tech { color: #888; }
-.se-gallery .card-price { color: #8b6914; }
-.se-gallery .card-price.sold { color: #999; }
-.se-gallery .card-cta { color: #8b6914; }
+.se-media .card-dim { color: #777 !important; }
+.se-media .card-hover {
+  color: #333 !important;
+  background: #fff;
+}
+.se-media .card-tech { color: #888 !important; }
+.se-media .card-price { color: #8b6914 !important; }
+.se-media .card-price.sold { color: #999 !important; font-style: italic; }
+.se-media .card-cta { color: #8b6914 !important; }
+.se-media .card-sold { opacity: .7; }
 
 /* Row track inside gallery */
 .se-gallery .row-track {
