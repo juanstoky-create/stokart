@@ -424,7 +424,6 @@ function initScrollExpand() {
   if (!section) return;
 
   const media = document.getElementById('seMedia');
-  const stickyOverlay = document.getElementById('seStickyOverlay');
   const title = document.getElementById('seTitle');
   const subtitle = document.getElementById('seSubtitle');
   const gallery = document.getElementById('seGallery');
@@ -508,8 +507,6 @@ function initScrollExpand() {
     // --- Hint fades out quickly ---
     hint.style.opacity = Math.max(0, 1 - p * 5);
 
-    // --- Sticky overlay fades out so marble bg shows seamlessly ---
-    stickyOverlay.style.opacity = Math.max(0, 1 - expandP * 1.5);
   }, { passive: true });
 
   // Init dots for gallery
