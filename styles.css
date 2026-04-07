@@ -206,7 +206,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   width: 420px; height: 530px;
   border-radius: 18px;
   overflow: hidden;
-  background: url('img/marmol.jpg') center/cover no-repeat;
+  background: #1a1a1a url('img/marmol.jpg') center/115% no-repeat;
   box-shadow: 0 20px 60px rgba(0,0,0,.4);
   will-change: width, height, border-radius;
 }
@@ -214,7 +214,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 /* Dark overlay on marble */
 .se-marble-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: rgba(10,10,10,.55);
+  background: rgba(10,10,10,.4);
   pointer-events: none;
 }
 
