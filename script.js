@@ -458,44 +458,47 @@ function initScrollExpand() {
 
     const p = Math.max(0, Math.min(1, scrolled / total));
 
-    // Phase 1 (0→0.6): Card expands from small to fullscreen
-    // Phase 2 (0.6→1): Gallery content fades in, title shrinks to top-left
-    const expandP = Math.min(1, p / 0.6);
-    const revealP = Math.max(0, (p - 0.55) / 0.45);
+    // Phase 1 (0→0.55): Card expands from small to fullscreen
+    // Phase 2 (0.5→1): Gallery content fades in, title shrinks to top-left
+    const expandP = Math.min(1, p / 0.55);
+    const revealP = Math.max(0, (p - 0.5) / 0.5);
 
     // --- Card expansion ---
     const w = startW + expandP * (vw - startW);
     const h = startH + expandP * (vh - startH);
     const radius = 18 * (1 - expandP);
-    const shadow = 0.4 * (1 - expandP);
 
     media.style.width = w + 'px';
     media.style.height = h + 'px';
     media.style.borderRadius = radius + 'px';
     media.style.clipPath = `inset(0 round ${radius}px)`;
     media.style.boxShadow = expandP < 1
-      ? `0 ${20 * (1 - expandP)}px ${60 * (1 - expandP)}px rgba(0,0,0,${shadow})`
+      ? `0 ${20 * (1 - expandP)}px ${60 * (1 - expandP)}px rgba(0,0,0,${0.4 * (1 - expandP)})`
       : 'none';
 
-    // --- Title morph: large/centered → small/top-left ---
-    const titleSize = isMobile
-      ? 2.2 - revealP * 0.9
-      : 3.5 - revealP * 2.1;
-    const titleX = revealP * (isMobile ? -25 : -38);
-    const titleY = revealP * (isMobile ? -35 : -42);
+    // --- Title morph: centered → top-left ---
+    // left: 50%→3%, top: 50%→8%, translate: -50%→0%, fontSize: 3.2→1.4
+    const tLeft = 50 - revealP * (isMobile ? 44 : 47);
+    const tTop = 50 - revealP * (isMobile ? 40 : 42);
+    const tTx = -50 * (1 - revealP);
+    const tTy = -50 * (1 - revealP);
+    const tSize = isMobile ? 2.2 - revealP * 0.9 : 3.2 - revealP * 1.8;
 
-    title.style.fontSize = titleSize + 'rem';
-    title.style.transform = `translate(${titleX}%, ${titleY}vh)`;
-    title.style.textAlign = revealP > 0.5 ? 'left' : 'center';
+    title.style.left = tLeft + '%';
+    title.style.top = tTop + '%';
+    title.style.transform = `translate(${tTx}%, ${tTy}%)`;
+    title.style.fontSize = tSize + 'rem';
 
-    // --- Subtitle appears when title is small ---
+    // --- Subtitle below title ---
+    subtitle.style.left = tLeft + '%';
+    subtitle.style.top = (tTop + (isMobile ? 6 : 5)) + '%';
+    subtitle.style.transform = `translate(${tTx}%, ${tTy}%)`;
     subtitle.style.opacity = Math.max(0, (revealP - 0.6) / 0.4);
-    subtitle.style.transform = `translate(${titleX}%, calc(${titleY}vh + ${titleSize + 1}rem))`;
 
     // --- Gallery cards reveal ---
-    if (revealP > 0.1) {
+    if (revealP > 0.15) {
       gallery.classList.add('visible');
-      gallery.style.opacity = Math.min(1, (revealP - 0.1) / 0.5);
+      gallery.style.opacity = Math.min(1, (revealP - 0.15) / 0.45);
     } else {
       gallery.classList.remove('visible');
       gallery.style.opacity = 0;
