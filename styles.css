@@ -201,7 +201,13 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   border-radius: 18px;
   overflow: hidden;
   clip-path: inset(0 round 18px);
-  background: #f5f3ef;
+  background:
+    linear-gradient(125deg, rgba(210,200,190,.15) 0%, transparent 40%),
+    linear-gradient(235deg, rgba(180,170,160,.12) 10%, transparent 50%),
+    linear-gradient(350deg, rgba(200,195,185,.1) 0%, transparent 35%),
+    radial-gradient(ellipse at 20% 50%, rgba(195,185,175,.12), transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(210,205,195,.1), transparent 50%),
+    #f0ece6;
   box-shadow: 0 20px 60px rgba(0,0,0,.4);
   will-change: width, height, border-radius, clip-path;
 }
@@ -233,7 +239,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .se-gallery {
   position: absolute; z-index: 3;
   left: 0; right: 0;
-  top: 55%; transform: translateY(-30%);
+  top: 50%; transform: translateY(-40%);
   opacity: 0;
   visibility: hidden;
   will-change: opacity;
@@ -295,7 +301,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   position: absolute; top: 0; bottom: 40px; width: 50px; z-index: 3;
   display: flex; align-items: center; justify-content: center;
   font-size: 2.5rem; color: rgba(0,0,0,.4);
-  background: rgba(245,243,239,.7);
+  background: rgba(240,236,230,.7);
   opacity: 0; transition: opacity .3s;
 }
 .se-row-container:hover .row-arrow { opacity: 1; }
