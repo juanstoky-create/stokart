@@ -482,7 +482,7 @@ function initScrollExpand() {
     const tTop = 50 - revealP * (isMobile ? 40 : 42);
     const tTx = -50 * (1 - revealP);
     const tTy = -50 * (1 - revealP);
-    const tSize = isMobile ? 2.2 - revealP * 0.9 : 3.2 - revealP * 1.8;
+    const tSize = isMobile ? 1.6 - revealP * 0.5 : 2.2 - revealP * 0.9;
 
     title.style.left = tLeft + '%';
     title.style.top = tTop + '%';

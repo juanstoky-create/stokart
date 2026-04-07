@@ -201,22 +201,23 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   border-radius: 18px;
   overflow: hidden;
   clip-path: inset(0 round 18px);
-  background:
-    linear-gradient(125deg, rgba(210,200,190,.15) 0%, transparent 40%),
-    linear-gradient(235deg, rgba(180,170,160,.12) 10%, transparent 50%),
-    linear-gradient(350deg, rgba(200,195,185,.1) 0%, transparent 35%),
-    radial-gradient(ellipse at 20% 50%, rgba(195,185,175,.12), transparent 60%),
-    radial-gradient(ellipse at 80% 30%, rgba(210,205,195,.1), transparent 50%),
-    #f0ece6;
+  background: #0a0a0a url('img/marmol.jpg') center/cover no-repeat;
   box-shadow: 0 20px 60px rgba(0,0,0,.4);
   will-change: width, height, border-radius, clip-path;
+}
+
+/* Dark overlay on marble */
+.se-marble-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: rgba(10,10,10,.7);
+  pointer-events: none;
 }
 
 /* Title inside gallery card — starts centered, morphs to top-left */
 .se-title {
   font-family: var(--serif); font-weight: 300;
-  font-size: 3.2rem;
-  color: #1a1a1a; line-height: 1.1;
+  font-size: 2.2rem;
+  color: #fff; line-height: 1.1;
   position: absolute; z-index: 5;
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
@@ -230,7 +231,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   font-family: var(--sans);
   font-size: .75rem; letter-spacing: .15rem;
   text-transform: uppercase;
-  color: #999; opacity: 0;
+  color: rgba(255,255,255,.5); opacity: 0;
   position: absolute; z-index: 5;
   will-change: opacity;
 }
@@ -255,35 +256,18 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   position: relative; width: 100%;
 }
 
-/* Cards inside gallery: LIGHT gallery aesthetic */
+/* Cards inside gallery: dark cards on marble bg */
 .se-media .card {
-  background: #fff !important;
-  box-shadow: 0 2px 16px rgba(0,0,0,.07);
-  border: 1px solid rgba(0,0,0,.06);
-  color: #1a1a1a;
+  background: var(--bg-card) !important;
 }
 .se-media .card:hover {
   transform: scale(1.04) translateY(-6px);
-  box-shadow: 0 12px 35px rgba(0,0,0,.12);
-}
-.se-media .card-base {
-  background: #fff;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
 }
 .se-media .card-base h3 {
-  color: #1a1a1a !important;
   font-weight: 600;
   font-size: 1.25rem;
 }
-.se-media .card-dim { color: #777 !important; }
-.se-media .card-hover {
-  color: #333 !important;
-  background: #fff;
-}
-.se-media .card-tech { color: #888 !important; }
-.se-media .card-price { color: #8b6914 !important; }
-.se-media .card-price.sold { color: #999 !important; font-style: italic; }
-.se-media .card-cta { color: #8b6914 !important; }
-.se-media .card-sold { opacity: .7; }
 
 /* Row track inside gallery */
 .se-gallery .row-track {
@@ -300,12 +284,12 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .se-gallery .row-arrow {
   position: absolute; top: 0; bottom: 40px; width: 50px; z-index: 3;
   display: flex; align-items: center; justify-content: center;
-  font-size: 2.5rem; color: rgba(0,0,0,.4);
-  background: rgba(240,236,230,.7);
+  font-size: 2.5rem; color: rgba(255,255,255,.7);
+  background: rgba(10,10,10,.4);
   opacity: 0; transition: opacity .3s;
 }
 .se-row-container:hover .row-arrow { opacity: 1; }
-.se-gallery .row-arrow:hover { background: rgba(245,243,239,.9); color: rgba(0,0,0,.7); }
+.se-gallery .row-arrow:hover { background: rgba(10,10,10,.7); }
 .se-gallery .row-arrow-left { left: 0; border-radius: 0 4px 4px 0; }
 .se-gallery .row-arrow-right { right: 0; border-radius: 4px 0 0 4px; }
 
@@ -316,10 +300,10 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   flex-shrink: 0;
 }
 .se-gallery .row-dot {
-  background: rgba(0,0,0,.12);
+  background: rgba(255,255,255,.15);
 }
 .se-gallery .row-dot.active {
-  background: #8b6914;
+  background: var(--accent);
 }
 
 /* Hint at bottom */
