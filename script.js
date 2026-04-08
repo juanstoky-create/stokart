@@ -208,12 +208,25 @@ function initBeforeAfter() {
 
   let dragging = false;
 
+  // Sync clip-path with CSS oscillation animation
+  function syncOscillation() {
+    if (dragging || slider.classList.contains('dragged')) return;
+    const sliderRect = slider.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const pct = ((sliderRect.left + sliderRect.width / 2 - containerRect.left) / containerRect.width) * 100;
+    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    requestAnimationFrame(syncOscillation);
+  }
+  requestAnimationFrame(syncOscillation);
+
   function setPosition(x) {
     const rect = container.getBoundingClientRect();
     let pct = ((x - rect.left) / rect.width) * 100;
     pct = Math.max(5, Math.min(95, pct));
     after.style.clipPath = `inset(0 0 0 ${pct}%)`;
     slider.style.left = `${pct}%`;
+    slider.classList.add('dragged');
+    slider.style.animation = 'none';
   }
 
   container.addEventListener('mousedown', (e) => { dragging = true; setPosition(e.clientX); });

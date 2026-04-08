@@ -489,7 +489,9 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   position: absolute; top: 0; bottom: 0; left: 50%;
   width: 3px; background: rgba(255,255,255,.6);
   z-index: 4; transform: translateX(-50%);
+  animation: baOscillate 2.5s ease-in-out 1s 3;
 }
+.ba-slider.dragged { animation: none; }
 .ba-handle {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
@@ -498,6 +500,11 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   display: flex; align-items: center; justify-content: center;
   gap: 2px; font-size: .7rem; font-weight: 700;
   box-shadow: 0 2px 10px rgba(0,0,0,.4);
+}
+@keyframes baOscillate {
+  0%, 100% { left: 50%; }
+  30% { left: 42%; }
+  70% { left: 58%; }
 }
 
 @media (max-width: 768px) {
