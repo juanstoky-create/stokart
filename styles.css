@@ -420,8 +420,8 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 }
 .card:hover .card-cta { letter-spacing: .1rem; }
 
-.card-sold { opacity: .65; }
-.card-sold:hover { opacity: .85; }
+.card-sold { opacity: 1; }
+.card-sold:hover { opacity: 1; }
 
 /* ===== OBRA A MEDIDA — Before/After ===== */
 .custom-work {
