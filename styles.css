@@ -203,7 +203,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 /* Expanding gallery card */
 .se-media {
   position: absolute; z-index: 2;
-  width: 420px; height: 530px;
+  width: 588px; height: 380px;
   border-radius: 18px;
   overflow: hidden;
   background: url('img/vittoria.jpg?v=2') center/cover no-repeat;
@@ -211,9 +211,11 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   will-change: width, height, border-radius;
 }
 
-/* Marble overlay — disabled, using clean marble image */
+/* Dark overlay on vittoria */
 .se-marble-overlay {
-  display: none;
+  position: absolute; inset: 0; z-index: 1;
+  background: rgba(10,10,10,.3);
+  pointer-events: none;
 }
 
 /* Title inside gallery card — starts centered, morphs to top-left */

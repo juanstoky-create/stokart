@@ -442,8 +442,8 @@ function initScrollExpand() {
   const hint = document.getElementById('seHint');
   const isMobile = window.innerWidth < 768;
 
-  const startW = isMobile ? 300 : 420;
-  const startH = isMobile ? 390 : 530;
+  const startW = isMobile ? 340 : 588;
+  const startH = isMobile ? 220 : 380;
 
   // Init row arrows inside gallery
   const rowContainer = section.querySelector('.se-row-container');
