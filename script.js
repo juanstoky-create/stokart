@@ -438,7 +438,6 @@ function initScrollExpand() {
 
   const media = document.getElementById('seMedia');
   const title = document.getElementById('seTitle');
-  const subtitle = document.getElementById('seSubtitle');
   const gallery = document.getElementById('seGallery');
   const hint = document.getElementById('seHint');
   const isMobile = window.innerWidth < 768;
@@ -500,12 +499,6 @@ function initScrollExpand() {
     title.style.top = tTop + '%';
     title.style.transform = `translate(${tTx}%, ${tTy}%)`;
     title.style.fontSize = tSize + 'rem';
-
-    // --- Subtitle below title ---
-    subtitle.style.left = tLeft + '%';
-    subtitle.style.top = (tTop + (isMobile ? 6 : 5)) + '%';
-    subtitle.style.transform = `translate(${tTx}%, ${tTy}%)`;
-    subtitle.style.opacity = Math.max(0, (revealP - 0.6) / 0.4);
 
     // --- Gallery cards reveal ---
     if (revealP > 0.15) {
