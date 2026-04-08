@@ -206,7 +206,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   width: 420px; height: 530px;
   border-radius: 18px;
   overflow: hidden;
-  background: url('img/vittoria.jpg') center/cover no-repeat;
+  background: url('img/vittoria.jpg?v=2') center/cover no-repeat;
   box-shadow: 0 20px 60px rgba(0,0,0,.4);
   will-change: width, height, border-radius;
 }
