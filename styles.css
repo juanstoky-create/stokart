@@ -263,7 +263,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   background: var(--bg-card) !important;
 }
 .se-media .card:hover {
-  transform: scale(1.04) translateY(-6px);
+  transform: scale(1.04);
   box-shadow: 0 12px 40px rgba(0,0,0,.5);
 }
 .se-media .card-base h3 {
@@ -274,11 +274,11 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 /* Row track inside gallery */
 .se-gallery .row-track {
   display: flex; gap: 20px;
-  overflow-x: auto; overflow-y: visible;
+  overflow-x: auto; overflow-y: hidden;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 1rem clamp(2rem, 4vw, 3.5rem);
+  padding: 1.5rem clamp(2rem, 4vw, 3.5rem);
 }
 .se-gallery .row-track::-webkit-scrollbar { display: none; }
 
