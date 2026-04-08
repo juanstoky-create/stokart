@@ -258,13 +258,22 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   position: relative; width: 100%;
 }
 
-/* Cards inside gallery: dark cards on marble bg */
+/* Cards inside gallery: dark cards on vittoria bg */
 .se-media .card {
   background: var(--bg-card) !important;
+  transform-origin: center center;
 }
 .se-media .card:hover {
-  transform: scale(1.04);
-  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  transform: scale(1.04) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5) !important;
+  z-index: 5;
+}
+.se-media .card:hover .card-hover {
+  max-height: 0 !important;
+  padding-bottom: 0 !important;
+}
+.se-media .card:hover .card-img img {
+  transform: scale(1.05) !important;
 }
 .se-media .card-base h3 {
   font-weight: 600;
