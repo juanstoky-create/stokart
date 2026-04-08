@@ -206,16 +206,14 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   width: 420px; height: 530px;
   border-radius: 18px;
   overflow: hidden;
-  background: #1a1a1a url('img/marmol.jpg') center/115% no-repeat;
+  background: url('img/marmol-card.png') center/cover no-repeat;
   box-shadow: 0 20px 60px rgba(0,0,0,.4);
   will-change: width, height, border-radius;
 }
 
-/* Dark overlay on marble */
+/* Marble overlay — disabled, using clean marble image */
 .se-marble-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  background: rgba(10,10,10,.4);
-  pointer-events: none;
+  display: none;
 }
 
 /* Title inside gallery card — starts centered, morphs to top-left */
