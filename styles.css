@@ -211,11 +211,8 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   will-change: width, height, border-radius;
 }
 
-/* Dark overlay on vittoria */
 .se-marble-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  background: rgba(10,10,10,.3);
-  pointer-events: none;
+  display: none;
 }
 
 /* Title inside gallery card — starts centered, morphs to top-left */
