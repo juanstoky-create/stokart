@@ -275,12 +275,23 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .se-media .card-hover {
   display: none !important;
 }
+.se-media .card:hover .card-base {
+  transform: translateY(-6px);
+  position: relative;
+  z-index: 11;
+  background: var(--bg-card);
+  transition: transform .25s ease;
+}
+.se-media .card:hover .card-base .card-dim {
+  display: none;
+}
 .se-media .card:hover .card-hover {
   display: flex !important;
+  flex-direction: column;
   position: absolute;
   bottom: 0; left: 0; right: 0;
   background: var(--bg-card);
-  padding: .8rem 1rem !important;
+  padding: .4rem 1rem .6rem !important;
   max-height: none !important;
   z-index: 10;
   border-radius: 0 0 8px 8px;
