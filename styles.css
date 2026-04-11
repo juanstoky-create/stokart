@@ -478,6 +478,28 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .card-sold { opacity: 1; }
 .card-sold:hover { opacity: 1; }
 
+/* Work-in-progress card (en desarrollo) */
+.card-wip { position: relative; }
+.card-badge {
+  position: absolute;
+  top: .7rem; right: .7rem;
+  z-index: 4;
+  font-size: .6rem;
+  letter-spacing: .12rem;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  background: var(--accent);
+  padding: .3rem .65rem;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+.card-price.wip {
+  color: var(--accent);
+  font-style: italic;
+  font-size: .9rem;
+}
+
 /* ===== OBRA A MEDIDA — Before/After ===== */
 .custom-work {
   margin: 4rem 0 0;
