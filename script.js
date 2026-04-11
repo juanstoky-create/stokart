@@ -487,10 +487,10 @@ function initScrollExpand() {
       ? `0 ${20 * (1 - expandP)}px ${60 * (1 - expandP)}px rgba(0,0,0,${0.4 * (1 - expandP)})`
       : 'none';
 
-    // --- Title morph: centered → top-left ---
-    // left: 50%→3%, top: 50%→8%, translate: -50%→0%, fontSize: 3.2→1.4
+    // --- Title morph: centered → left, closer to gallery ---
+    // left: 50%→3%, top: 50%→22%, translate: -50%→0%, fontSize: 3.2→1.4
     const tLeft = 50 - revealP * (isMobile ? 44 : 47);
-    const tTop = 50 - revealP * (isMobile ? 40 : 42);
+    const tTop = 50 - revealP * (isMobile ? 26 : 28);
     const tTx = -50 * (1 - revealP);
     const tTy = -50 * (1 - revealP);
     const tSize = isMobile ? 1.6 - revealP * 0.5 : 2.2 - revealP * 0.9;
