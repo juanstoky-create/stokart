@@ -11,8 +11,8 @@ document.body.style.overflow = 'hidden';
 function init() {
   initNav();
   initScrollReveal();
-  initBeforeAfter();
-  initPiezaClicks();
+  initFeaturedCarousel();
+  initCardClicks();
   initTestimonials();
   initFAB();
   initForm();
@@ -79,52 +79,70 @@ function initScrollReveal() {
   els.forEach(el => obs.observe(el));
 }
 
-/* ===== PIEZA CARD CLICKS → WhatsApp ===== */
-function initPiezaClicks() {
-  document.querySelectorAll('.pieza-card[data-wa]').forEach(card => {
+/* ===== FEATURED CAROUSEL ===== */
+function initFeaturedCarousel() {
+  const slides = document.querySelectorAll('.featured-slide');
+  const prev = document.getElementById('featuredPrev');
+  const next = document.getElementById('featuredNext');
+  const dotsContainer = document.getElementById('featuredDots');
+  if (!slides.length || !dotsContainer) return;
+
+  let current = 0;
+  const total = slides.length;
+
+  // Create dots
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('f-dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => go(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  function go(n) {
+    slides[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dotsContainer.querySelectorAll('.f-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prev.addEventListener('click', () => go(current > 0 ? current - 1 : total - 1));
+  next.addEventListener('click', () => go(current < total - 1 ? current + 1 : 0));
+
+  // Slide clicks → WhatsApp
+  slides.forEach(slide => {
+    if (slide.dataset.wa) {
+      slide.addEventListener('click', () => {
+        window.open(`https://wa.me/5491161592163?text=${encodeURIComponent(slide.dataset.wa)}`, '_blank');
+      });
+    }
+  });
+
+  // Auto-cycle
+  let auto = setInterval(() => go(current < total - 1 ? current + 1 : 0), 5000);
+  const carousel = document.getElementById('featuredCarousel');
+  carousel.addEventListener('mouseenter', () => clearInterval(auto));
+  carousel.addEventListener('mouseleave', () => {
+    auto = setInterval(() => go(current < total - 1 ? current + 1 : 0), 5000);
+  });
+
+  // Touch swipe
+  let tx = 0;
+  carousel.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  carousel.addEventListener('touchend', e => {
+    const d = tx - e.changedTouches[0].clientX;
+    if (Math.abs(d) > 50) d > 0 ? next.click() : prev.click();
+  });
+}
+
+/* ===== CARD CLICKS → WhatsApp (mosaic + featured) ===== */
+function initCardClicks() {
+  document.querySelectorAll('.mosaic-card[data-wa]').forEach(card => {
     card.addEventListener('click', () => {
       const msg = encodeURIComponent(card.dataset.wa);
       window.open(`https://wa.me/5491161592163?text=${msg}`, '_blank');
     });
   });
-}
-
-/* ===== BEFORE/AFTER SLIDER ===== */
-function initBeforeAfter() {
-  const container = document.getElementById('beforeAfter');
-  const after = document.getElementById('baAfter');
-  const slider = document.getElementById('baSlider');
-  if (!container || !after || !slider) return;
-
-  let dragging = false;
-
-  function syncOscillation() {
-    if (dragging || slider.classList.contains('dragged')) return;
-    const sliderRect = slider.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-    const pct = ((sliderRect.left + sliderRect.width / 2 - containerRect.left) / containerRect.width) * 100;
-    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
-    requestAnimationFrame(syncOscillation);
-  }
-  requestAnimationFrame(syncOscillation);
-
-  function setPosition(x) {
-    const rect = container.getBoundingClientRect();
-    let pct = ((x - rect.left) / rect.width) * 100;
-    pct = Math.max(5, Math.min(95, pct));
-    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
-    slider.style.left = `${pct}%`;
-    slider.classList.add('dragged');
-    slider.style.animation = 'none';
-  }
-
-  container.addEventListener('mousedown', (e) => { dragging = true; setPosition(e.clientX); });
-  window.addEventListener('mouseup', () => { dragging = false; });
-  window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
-
-  container.addEventListener('touchstart', (e) => { dragging = true; setPosition(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('touchend', () => { dragging = false; });
-  window.addEventListener('touchmove', (e) => { if (dragging) setPosition(e.touches[0].clientX); }, { passive: true });
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -136,7 +154,6 @@ function initTestimonials() {
   let current = 0;
   const total = testimonials.length;
 
-  // Create dots
   for (let i = 0; i < total; i++) {
     const dot = document.createElement('div');
     dot.classList.add('t-dot');
@@ -152,7 +169,6 @@ function initTestimonials() {
     dotsContainer.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
-  // Auto-cycle
   let auto = setInterval(() => go(current < total - 1 ? current + 1 : 0), 5000);
   const parent = testimonials[0].parentElement;
   parent.addEventListener('mouseenter', () => clearInterval(auto));
