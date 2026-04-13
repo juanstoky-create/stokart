@@ -56,6 +56,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 }
 .nav-links {
   display: flex; list-style: none; gap: 2.5rem; align-items: center;
+  opacity: 0; pointer-events: none; transition: opacity var(--transition);
 }
 .nav-links a {
   font-size: .75rem; letter-spacing: .15rem; text-transform: uppercase;
@@ -69,8 +70,11 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   border: 1px solid var(--accent); color: var(--accent);
   border-radius: 999px;
   transition: all var(--transition);
+  opacity: 0; pointer-events: none;
 }
 .nav-cta-btn:hover { background: var(--accent); color: var(--bg); }
+.nav.scrolled .nav-links,
+.nav.scrolled .nav-cta-btn { opacity: 1; pointer-events: auto; }
 
 /* Mobile toggle */
 .nav-toggle { display: none; flex-direction: column; gap: 5px; width: 28px; z-index: 101; }
@@ -191,17 +195,33 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   z-index: 2;
 }
 .featured-overlay h3 {
-  font-family: var(--serif); font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-family: var(--serif); font-weight: 500; font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   letter-spacing: .08em; margin-bottom: .3rem;
   text-shadow: 0 2px 12px rgba(0,0,0,.7);
 }
-.featured-overlay span {
+.featured-desc {
   font-size: .75rem; color: rgba(255,255,255,.85); letter-spacing: .04em;
-  text-shadow: 0 1px 6px rgba(0,0,0,.5);
+  text-shadow: 0 1px 6px rgba(0,0,0,.5); margin: 0;
 }
-.featured-overlay em {
+.featured-desc em {
   font-style: normal; color: var(--accent);
 }
+.featured-cta {
+  display: inline-block; margin-top: .8rem;
+  font-size: .6rem; letter-spacing: .12rem; text-transform: uppercase;
+  padding: .45rem 1.2rem;
+  border: 1px solid var(--accent); color: var(--accent);
+  border-radius: 999px; cursor: pointer;
+  transition: all var(--transition);
+}
+.featured-cta:hover { background: var(--accent); color: var(--bg); }
+.featured-badge-sold, .featured-badge-wip {
+  display: block; margin-top: .6rem;
+  font-family: var(--serif); font-size: .75rem; letter-spacing: .06em;
+  font-style: italic;
+}
+.featured-badge-sold { color: var(--text-muted); }
+.featured-badge-wip { color: var(--accent); }
 
 .featured-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
@@ -293,7 +313,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   max-width: 440px; margin: 0 auto;
 }
 .macro-card-hero {
-  position: relative; aspect-ratio: 16/9; overflow: hidden;
+  position: relative; aspect-ratio: 4/5; overflow: hidden;
 }
 
 /* Before / After comparison */
@@ -370,7 +390,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 2.5rem 2rem;
-  max-width: 640px; margin: 0 auto;
+  margin: 0 auto;
 }
 .testimonial.active { display: block; }
 @keyframes fadeTestimonial { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -402,9 +422,8 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 .contacto { padding: 0; }
 .contacto-split {
   display: grid; grid-template-columns: 1fr 1fr;
-  min-height: 480px;
 }
-.contacto-img { overflow: hidden; }
+.contacto-img { overflow: hidden; aspect-ratio: 1; }
 .contacto-img img {
   width: 100%; height: 100%; object-fit: cover;
 }
@@ -443,7 +462,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
 
 /* ===== FOOTER ===== */
 .footer {
-  padding: 3rem 0;
+  padding: 2.5rem 0;
   border-top: 1px solid var(--border);
 }
 .footer-inner {
@@ -453,13 +472,6 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   font-family: var(--serif); font-size: 1rem; font-weight: 300;
   letter-spacing: .5rem; color: var(--text);
 }
-.footer-social {
-  display: flex; gap: 1.5rem; align-items: center;
-}
-.footer-social a {
-  color: var(--text-muted); transition: color var(--transition);
-}
-.footer-social a:hover { color: var(--accent); }
 .footer-copy {
   font-size: .65rem; color: var(--text-muted); letter-spacing: .05em;
 }
@@ -498,6 +510,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
     align-items: center; justify-content: center;
     gap: 2rem; z-index: 100;
   }
+  .nav-links.open { opacity: 1; pointer-events: auto; }
   .nav-links.open a { font-size: 1rem; color: var(--text); }
 
   .featured-carousel { aspect-ratio: 4/3; }
@@ -508,7 +521,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   .macro-card-proceso { padding: 1.5rem; }
 
   .contacto-split { grid-template-columns: 1fr; }
-  .contacto-img { max-height: 300px; }
+  .contacto-img { max-height: 300px; aspect-ratio: auto; }
 
   .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
 }
