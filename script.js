@@ -15,7 +15,6 @@ function init() {
   initCardClicks();
   initTestimonials();
   initFAB();
-  initForm();
   initHeroParallax();
 }
 
@@ -189,19 +188,3 @@ function initFAB() {
   obs.observe(hero);
 }
 
-/* ===== CONTACT FORM → WhatsApp ===== */
-function initForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const n = form.querySelector('#nombre').value;
-    const em = form.querySelector('#email').value;
-    const a = form.querySelector('#asunto').value;
-    const m = form.querySelector('#mensaje').value;
-    const t = encodeURIComponent(`Hola Juan! Soy ${n} (${em}).\n\nAsunto: ${a}\n\n${m}`);
-    window.open(`https://wa.me/5491161592163?text=${t}`, '_blank');
-    form.reset();
-  });
-}
