@@ -16,6 +16,7 @@ function init() {
   initTestimonials();
   initFAB();
   initHeroParallax();
+  initBeforeAfter();
 }
 
 /* ===== NAV ===== */
@@ -174,6 +175,34 @@ function initTestimonials() {
   parent.addEventListener('mouseleave', () => {
     auto = setInterval(() => go(current < total - 1 ? current + 1 : 0), 5000);
   });
+}
+
+/* ===== BEFORE / AFTER COMPARISON ===== */
+function initBeforeAfter() {
+  const compare = document.getElementById('baCompare');
+  const handle = document.getElementById('baHandle');
+  if (!compare || !handle) return;
+  const beforeImg = compare.querySelector('.ba-before-img');
+  if (!beforeImg) return;
+
+  let dragging = false;
+
+  function updatePosition(x) {
+    const rect = compare.getBoundingClientRect();
+    let pos = (x - rect.left) / rect.width;
+    pos = Math.max(0.05, Math.min(0.95, pos));
+    const pct = pos * 100;
+    beforeImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    handle.style.left = pct + '%';
+  }
+
+  compare.addEventListener('mousedown', (e) => { dragging = true; updatePosition(e.clientX); });
+  window.addEventListener('mousemove', (e) => { if (dragging) { e.preventDefault(); updatePosition(e.clientX); } });
+  window.addEventListener('mouseup', () => { dragging = false; });
+
+  compare.addEventListener('touchstart', (e) => { dragging = true; updatePosition(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('touchmove', (e) => { if (dragging) updatePosition(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('touchend', () => { dragging = false; });
 }
 
 /* ===== FAB ===== */
