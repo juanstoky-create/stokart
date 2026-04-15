@@ -18,7 +18,8 @@ function init() {
   initFAB();
   initHeroParallax();
   initBeforeAfter();
-  initModal();
+  initModalBio();
+  initModalVisualizador();
 }
 
 /* ===== CUSTOM CURSOR ===== */
@@ -28,34 +29,27 @@ function initCursor() {
   const ring = document.getElementById('cursorRing');
   if (!cursor || window.matchMedia('(pointer: coarse)').matches) return;
 
-  let mouseX = -100, mouseY = -100;
-  let ringX = -100, ringY = -100;
-  let raf;
+  let mouseX = -100, mouseY = -100, ringX = -100, ringY = -100;
 
   document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    mouseX = e.clientX; mouseY = e.clientY;
     dot.style.left = mouseX + 'px';
     dot.style.top = mouseY + 'px';
   });
 
-  function animateRing() {
+  (function animateRing() {
     ringX += (mouseX - ringX) * 0.12;
     ringY += (mouseY - ringY) * 0.12;
     ring.style.left = ringX + 'px';
     ring.style.top = ringY + 'px';
-    raf = requestAnimationFrame(animateRing);
-  }
-  animateRing();
+    requestAnimationFrame(animateRing);
+  })();
 
-  // Hover states
-  const hoverEls = document.querySelectorAll('a, button, .mosaic-card, .featured-arrow, .f-dot, .t-dot, .contacto-square-btn');
-  hoverEls.forEach(el => {
+  document.querySelectorAll('a, button, .mosaic-card, .featured-arrow, .f-dot, .t-dot, .contacto-square-btn, .obra-option, .upload-zone').forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
   });
 
-  // View state on featured carousel
   const carousel = document.getElementById('featuredCarousel');
   if (carousel) {
     carousel.addEventListener('mouseenter', () => document.body.classList.add('cursor-view'));
@@ -77,12 +71,8 @@ function initNav() {
     toggle.classList.toggle('open');
     links.classList.toggle('open');
   });
-
   links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      toggle.classList.remove('open');
-      links.classList.remove('open');
-    });
+    a.addEventListener('click', () => { toggle.classList.remove('open'); links.classList.remove('open'); });
   });
 
   window.addEventListener('scroll', () => {
@@ -113,21 +103,16 @@ function initHeroParallax() {
 
 /* ===== SCROLL REVEAL ===== */
 function initScrollReveal() {
-  const els = document.querySelectorAll('.scroll-reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-  els.forEach(el => obs.observe(el));
+  document.querySelectorAll('.scroll-reveal').forEach(el => obs.observe(el));
 }
 
-/* ===== FEATURED CAROUSEL ===== */
+/* ===== FEATURED CAROUSEL — con sync de mosaic stroke ===== */
 function initFeaturedCarousel() {
   const slides = document.querySelectorAll('.featured-slide');
+  const mosaicCards = document.querySelectorAll('.mosaic-card');
   const prev = document.getElementById('featuredPrev');
   const next = document.getElementById('featuredNext');
   const dotsContainer = document.getElementById('featuredDots');
@@ -136,6 +121,7 @@ function initFeaturedCarousel() {
   let current = 0;
   const total = slides.length;
 
+  // Build dots
   for (let i = 0; i < total; i++) {
     const dot = document.createElement('div');
     dot.classList.add('f-dot');
@@ -144,16 +130,29 @@ function initFeaturedCarousel() {
     dotsContainer.appendChild(dot);
   }
 
+  function syncMosaic(index) {
+    mosaicCards.forEach(card => {
+      card.classList.toggle('active-mosaic', parseInt(card.dataset.index) === index);
+    });
+    // scroll mosaic row to show active card
+    const activeCard = document.querySelector(`.mosaic-card[data-index="${index}"]`);
+    if (activeCard) {
+      activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }
+
   function go(n) {
     slides[current].classList.remove('active');
     current = (n + total) % total;
     slides[current].classList.add('active');
     dotsContainer.querySelectorAll('.f-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    syncMosaic(current);
   }
 
   prev.addEventListener('click', () => go(current - 1));
   next.addEventListener('click', () => go(current + 1));
 
+  // Click on slide → WhatsApp
   slides.forEach(slide => {
     if (slide.dataset.wa) {
       slide.addEventListener('click', () => {
@@ -162,13 +161,21 @@ function initFeaturedCarousel() {
     }
   });
 
+  // Click on mosaic → jump to that slide
+  mosaicCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = parseInt(card.dataset.index);
+      if (!isNaN(idx)) go(idx);
+    });
+  });
+
+  // Auto-cycle
   let auto = setInterval(() => go(current + 1), 5000);
   const carousel = document.getElementById('featuredCarousel');
   carousel.addEventListener('mouseenter', () => clearInterval(auto));
-  carousel.addEventListener('mouseleave', () => {
-    auto = setInterval(() => go(current + 1), 5000);
-  });
+  carousel.addEventListener('mouseleave', () => { auto = setInterval(() => go(current + 1), 5000); });
 
+  // Touch swipe
   let tx = 0;
   carousel.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
   carousel.addEventListener('touchend', e => {
@@ -177,13 +184,9 @@ function initFeaturedCarousel() {
   });
 }
 
-/* ===== CARD CLICKS ===== */
+/* ===== CARD CLICKS (solo WhatsApp, sin conflicto con mosaic→carousel) ===== */
 function initCardClicks() {
-  document.querySelectorAll('.mosaic-card[data-wa]').forEach(card => {
-    card.addEventListener('click', () => {
-      window.open(`https://wa.me/5491161592163?text=${encodeURIComponent(card.dataset.wa)}`, '_blank');
-    });
-  });
+  // handled inside initFeaturedCarousel for mosaic
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -211,14 +214,13 @@ function initTestimonials() {
   }
 
   let auto = setInterval(() => go(current < total - 1 ? current + 1 : 0), 6000);
-  const parent = testimonials[0].parentElement;
-  parent.addEventListener('mouseenter', () => clearInterval(auto));
-  parent.addEventListener('mouseleave', () => {
+  testimonials[0].parentElement.addEventListener('mouseenter', () => clearInterval(auto));
+  testimonials[0].parentElement.addEventListener('mouseleave', () => {
     auto = setInterval(() => go(current < total - 1 ? current + 1 : 0), 6000);
   });
 }
 
-/* ===== BEFORE / AFTER ===== */
+/* ===== BEFORE/AFTER ===== */
 function initBeforeAfter() {
   const compare = document.getElementById('baCompare');
   const handle = document.getElementById('baHandle');
@@ -230,11 +232,9 @@ function initBeforeAfter() {
 
   function updatePosition(x) {
     const rect = compare.getBoundingClientRect();
-    let pos = (x - rect.left) / rect.width;
-    pos = Math.max(0.05, Math.min(0.95, pos));
-    const pct = pos * 100;
-    beforeImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-    handle.style.left = pct + '%';
+    let pos = Math.max(0.05, Math.min(0.95, (x - rect.left) / rect.width));
+    beforeImg.style.clipPath = `inset(0 ${100 - pos * 100}% 0 0)`;
+    handle.style.left = (pos * 100) + '%';
   }
 
   compare.addEventListener('mousedown', e => { dragging = true; updatePosition(e.clientX); });
@@ -250,41 +250,45 @@ function initFAB() {
   const fab = document.getElementById('fabWa');
   const hero = document.getElementById('hero');
   if (!fab || !hero) return;
-  const obs = new IntersectionObserver(([e]) => {
+  new IntersectionObserver(([e]) => {
     fab.classList.toggle('visible', !e.isIntersecting);
-  }, { threshold: 0.3 });
-  obs.observe(hero);
+  }, { threshold: 0.3 }).observe(hero);
+}
+
+/* ===== MODAL BIO ===== */
+function initModalBio() {
+  const overlay = document.getElementById('modalBio');
+  const btnOpen = document.getElementById('btnBioModal');
+  const btnClose = document.getElementById('modalBioClose');
+  if (!overlay || !btnOpen) return;
+
+  btnOpen.addEventListener('click', () => { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  btnClose.addEventListener('click', () => closeModal());
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
 }
 
 /* ===== MODAL VISUALIZADOR ===== */
-function initModal() {
+function initModalVisualizador() {
   const overlay = document.getElementById('modalVisualizar');
   const btnOpen = document.getElementById('btnVisualizarModal');
   const btnClose = document.getElementById('modalClose');
   if (!overlay || !btnOpen) return;
 
-  // Open / close
-  btnOpen.addEventListener('click', () => {
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    showStep(1);
-  });
+  btnOpen.addEventListener('click', () => { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; showStep(1); });
   btnClose.addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
 
-  function closeModal() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  // Steps
+  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
   function showStep(n) {
     document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
     document.getElementById('step' + n).classList.add('active');
   }
 
-  // Step 1 — file upload
+  // Step 1
   const fileInput = document.getElementById('fileInput');
   const uploadZone = document.getElementById('uploadZone');
   const step1Next = document.getElementById('step1Next');
@@ -310,7 +314,7 @@ function initModal() {
   step1Next.addEventListener('click', () => showStep(2));
   document.getElementById('step2Back').addEventListener('click', () => showStep(1));
 
-  // Step 2 — obra picker
+  // Step 2
   let selectedObra = { img: 'img/aurelius-space.jpg', name: 'Aurelius' };
   document.querySelectorAll('.obra-option').forEach(opt => {
     opt.addEventListener('click', () => {
@@ -320,25 +324,15 @@ function initModal() {
     });
   });
 
-  document.getElementById('step2Next').addEventListener('click', () => {
-    buildPreview();
-    showStep(3);
-  });
-
+  document.getElementById('step2Next').addEventListener('click', () => { buildPreview(); showStep(3); });
   document.getElementById('step3Back').addEventListener('click', () => showStep(2));
 
-  // Step 3 — preview
+  // Step 3
   function buildPreview() {
-    const bg = document.getElementById('previewBg');
-    const artImg = document.getElementById('previewArtImg');
-    const obraName = document.getElementById('previewObraName');
-    const waLink = document.getElementById('step3WA');
-
-    bg.src = uploadedImageSrc;
-    artImg.src = selectedObra.img;
-    obraName.textContent = 'Obra: ' + selectedObra.name;
-    waLink.href = `https://wa.me/5491161592163?text=${encodeURIComponent('Hola Juan, probé tu visualizador y me gustaría la obra ' + selectedObra.name + ' para mi espacio. ¿Podemos conversar?')}`;
-
+    document.getElementById('previewBg').src = uploadedImageSrc;
+    document.getElementById('previewArtImg').src = selectedObra.img;
+    document.getElementById('previewObraName').textContent = 'Obra: ' + selectedObra.name;
+    document.getElementById('step3WA').href = `https://wa.me/5491161592163?text=${encodeURIComponent('Hola Juan, probé tu visualizador y me gustaría la obra ' + selectedObra.name + ' para mi espacio. ¿Podemos conversar?')}`;
     initDragResize();
   }
 
@@ -348,72 +342,45 @@ function initModal() {
     const handle = document.getElementById('resizeHandle');
     if (!artwork || !canvas) return;
 
-    // Reset position
-    artwork.style.left = '30%';
-    artwork.style.top = '20%';
-    artwork.style.width = '35%';
+    artwork.style.left = '30%'; artwork.style.top = '20%'; artwork.style.width = '35%';
 
-    let dragging = false, resizing = false;
-    let startX, startY, startLeft, startTop, startW;
+    let dragging = false, resizing = false, startX, startY, startLeft, startTop, startW;
 
-    // Drag
     artwork.addEventListener('mousedown', e => {
       if (e.target === handle) return;
-      dragging = true;
-      startX = e.clientX; startY = e.clientY;
-      const r = artwork.getBoundingClientRect();
-      const cr = canvas.getBoundingClientRect();
-      startLeft = r.left - cr.left;
-      startTop = r.top - cr.top;
+      dragging = true; startX = e.clientX; startY = e.clientY;
+      const r = artwork.getBoundingClientRect(), cr = canvas.getBoundingClientRect();
+      startLeft = r.left - cr.left; startTop = r.top - cr.top;
       e.preventDefault();
     });
-
-    // Resize
     handle.addEventListener('mousedown', e => {
-      resizing = true;
-      startX = e.clientX;
-      startW = artwork.offsetWidth;
+      resizing = true; startX = e.clientX; startW = artwork.offsetWidth;
       e.preventDefault(); e.stopPropagation();
     });
-
     window.addEventListener('mousemove', e => {
+      const cr = canvas.getBoundingClientRect();
       if (dragging) {
-        const cr = canvas.getBoundingClientRect();
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        artwork.style.left = ((startLeft + dx) / cr.width * 100) + '%';
-        artwork.style.top = ((startTop + dy) / cr.height * 100) + '%';
+        artwork.style.left = ((startLeft + e.clientX - startX) / cr.width * 100) + '%';
+        artwork.style.top = ((startTop + e.clientY - startY) / cr.height * 100) + '%';
       }
       if (resizing) {
-        const cr = canvas.getBoundingClientRect();
-        const newW = Math.max(60, startW + (e.clientX - startX));
-        artwork.style.width = (newW / cr.width * 100) + '%';
+        artwork.style.width = (Math.max(60, startW + e.clientX - startX) / cr.width * 100) + '%';
       }
     });
-
     window.addEventListener('mouseup', () => { dragging = false; resizing = false; });
 
-    // Touch drag
     artwork.addEventListener('touchstart', e => {
       if (e.target === handle) return;
-      dragging = true;
-      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
-      const r = artwork.getBoundingClientRect();
-      const cr = canvas.getBoundingClientRect();
-      startLeft = r.left - cr.left;
-      startTop = r.top - cr.top;
+      dragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+      const r = artwork.getBoundingClientRect(), cr = canvas.getBoundingClientRect();
+      startLeft = r.left - cr.left; startTop = r.top - cr.top;
     }, { passive: true });
-
     window.addEventListener('touchmove', e => {
-      if (dragging) {
-        const cr = canvas.getBoundingClientRect();
-        const dx = e.touches[0].clientX - startX;
-        const dy = e.touches[0].clientY - startY;
-        artwork.style.left = ((startLeft + dx) / cr.width * 100) + '%';
-        artwork.style.top = ((startTop + dy) / cr.height * 100) + '%';
-      }
+      if (!dragging) return;
+      const cr = canvas.getBoundingClientRect();
+      artwork.style.left = ((startLeft + e.touches[0].clientX - startX) / cr.width * 100) + '%';
+      artwork.style.top = ((startTop + e.touches[0].clientY - startY) / cr.height * 100) + '%';
     }, { passive: true });
-
     window.addEventListener('touchend', () => { dragging = false; });
   }
 }
