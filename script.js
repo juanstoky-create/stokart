@@ -169,11 +169,7 @@ function initFeaturedCarousel() {
     });
   });
 
-  // Auto-cycle
-  let auto = setInterval(() => go(current + 1), 5000);
   const carousel = document.getElementById('featuredCarousel');
-  carousel.addEventListener('mouseenter', () => clearInterval(auto));
-  carousel.addEventListener('mouseleave', () => { auto = setInterval(() => go(current + 1), 5000); });
 
   // Touch swipe
   let tx = 0;
@@ -213,11 +209,7 @@ function initTestimonials() {
     dotsContainer.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
-  let auto = setInterval(() => go(current < total - 1 ? current + 1 : 0), 6000);
-  testimonials[0].parentElement.addEventListener('mouseenter', () => clearInterval(auto));
-  testimonials[0].parentElement.addEventListener('mouseleave', () => {
-    auto = setInterval(() => go(current < total - 1 ? current + 1 : 0), 6000);
-  });
+
 }
 
 /* ===== BEFORE/AFTER ===== */
