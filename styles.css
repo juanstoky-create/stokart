@@ -435,3 +435,70 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   .mosaic-card { flex: 0 0 82px; }
   .obra-picker { grid-template-columns: repeat(2,1fr); }
 }
+
+/* ===== MACRO CARD — split layout izq/der ===== */
+.macro-section { padding: 2rem 0 3rem; }
+.macro-card { border-radius: 12px; overflow: hidden; background: var(--bg-card); border: 1px solid var(--border); }
+.macro-card-split {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  min-height: 460px;
+}
+.macro-card-left {
+  padding: 2.5rem 2rem;
+  display: flex; flex-direction: column;
+  gap: 1.6rem;
+  border-right: 1px solid var(--border);
+}
+.macro-card-left h2 {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.2rem, 2.2vw, 1.9rem);
+  letter-spacing: .05em; line-height: 1.25;
+}
+.macro-card-right {
+  position: relative; overflow: hidden;
+}
+.macro-card-right .ba-compare {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+/* override old macro step sizes */
+.macro-card-left .macro-step { padding-top: .8rem; }
+.macro-card-left .macro-step::before { height: .8rem; }
+.macro-card-left .macro-step-num { font-size: 1rem; margin-bottom: .3rem; }
+.macro-card-left .macro-step h4 { font-size: .82rem; margin-bottom: .2rem; }
+.macro-card-left .macro-step p { font-size: .68rem; line-height: 1.6; }
+.macro-card-left .btn-visualizar { align-self: flex-start; margin-top: auto; }
+
+/* ===== CONTACTO — full marmol sin margins ===== */
+.contacto-content {
+  background: url('img/marmol.jpg') center / cover no-repeat !important;
+  padding: 4rem 3rem !important;
+  margin: 0 !important;
+}
+.contacto-content::before { background: rgba(8,8,8,.66) !important; }
+
+/* ===== CAROUSEL — obras más grandes, desc+CTA abajo derecha ===== */
+.featured-slide img {
+  max-width: 38% !important;
+  height: 92% !important;
+}
+.featured-overlay-left {
+  justify-content: flex-end !important;
+  padding-bottom: 2.5rem;
+}
+.featured-overlay-right {
+  justify-content: flex-end !important;
+  padding-bottom: 2.5rem;
+}
+.featured-overlay {
+  align-items: flex-end !important;
+}
+
+/* Responsive macro split */
+@media (max-width: 900px) {
+  .macro-card-split { grid-template-columns: 1fr; }
+  .macro-card-left { border-right: none; border-bottom: 1px solid var(--border); }
+  .macro-card-right { min-height: 280px; position: relative; }
+  .macro-card-right .ba-compare { position: relative; height: 280px; }
+}
