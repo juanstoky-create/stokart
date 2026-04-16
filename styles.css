@@ -343,3 +343,166 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   .mosaic-card { flex: 0 0 82px; }
   .obra-picker { grid-template-columns: repeat(2,1fr); }
 }
+
+/* ===== CAROUSEL — vertical centrado, info a los lados ===== */
+.featured-carousel {
+  aspect-ratio: 16/9 !important;
+  background: #000;
+}
+.featured-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.featured-slide img {
+  /* imagen vertical, más chica, centrada */
+  width: auto !important;
+  height: 88% !important;
+  max-width: 42% !important;
+  object-fit: contain !important;
+  position: relative;
+  z-index: 2;
+  border-radius: 2px;
+}
+
+/* Gradientes laterales tipo Netflix */
+.featured-slide::before,
+.featured-slide::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 38%;
+  z-index: 3;
+  pointer-events: none;
+}
+.featured-slide::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,.85) 40%, rgba(0,0,0,0) 100%);
+}
+.featured-slide::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,.85) 40%, rgba(0,0,0,0) 100%);
+}
+
+/* Overlay rediseñado — split izq/der */
+.featured-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 0 3rem;
+  background: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 4;
+  pointer-events: none;
+}
+.featured-overlay-left {
+  flex: 1;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .6rem;
+}
+.featured-overlay-right {
+  flex: 1;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .8rem;
+  text-align: right;
+}
+.featured-overlay h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 3.2rem) !important;
+  letter-spacing: .06em;
+  line-height: 1.1;
+  text-shadow: 0 2px 20px rgba(0,0,0,.6);
+}
+.featured-desc {
+  font-size: .75rem !important;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .06em;
+}
+.featured-desc em {
+  color: var(--accent);
+  font-size: .85rem !important;
+  font-style: normal;
+}
+.featured-cta {
+  pointer-events: auto;
+  margin-top: 0 !important;
+}
+.featured-badge-sold,
+.featured-badge-wip {
+  margin-top: 0 !important;
+}
+
+/* Flechas más afuera */
+.featured-prev { left: .8rem; z-index: 5; }
+.featured-next { right: .8rem; z-index: 5; }
+
+/* ===== MACRO CARD — 30% más pequeña ===== */
+.macro-section { padding: 2rem 0 3.5rem; }
+.macro-card-header { padding: 1.8rem 2rem 1.2rem; }
+.macro-card-header h2 { font-size: clamp(1.1rem, 2.2vw, 1.7rem) !important; }
+.macro-card-hero { aspect-ratio: 16/7 !important; }
+.macro-card-proceso { padding: 1.6rem 2rem; }
+.macro-card-proceso-title { font-size: .85rem; margin-bottom: 1.5rem; }
+.macro-step-num { font-size: 1.1rem !important; }
+.macro-step h4 { font-size: .85rem !important; }
+.macro-step p { font-size: .68rem !important; }
+.macro-card-cta { margin-top: 1.5rem; padding-top: 1.4rem; }
+.btn-visualizar { padding: .75rem 1.6rem; font-size: .66rem; }
+
+/* ===== NAV — quitar apellido ===== */
+.nav-apellido { display: none !important; }
+
+/* ===== CONTACTO — full mármol sin márgenes ni gris ===== */
+.contacto-content {
+  background: url('img/marmol.jpg') center / cover no-repeat !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.contacto-content::before {
+  background: rgba(8,8,8,.65) !important;
+}
+.contacto-content > * {
+  position: relative;
+  z-index: 1;
+}
+/* re-center content with padding via flex */
+.contacto-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1.8rem !important;
+  padding: 4rem 3rem !important;
+}
+
+/* ===== RESPONSIVE carousel vertical ===== */
+@media (max-width: 900px) {
+  .featured-slide img {
+    max-width: 60% !important;
+    height: 80% !important;
+  }
+  .featured-overlay {
+    padding: 0 1.2rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 1.5rem;
+  }
+  .featured-overlay-right {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 0;
+  }
+  .featured-overlay-left { padding-right: 0; }
+}
+@media (max-width: 480px) {
+  .featured-slide img { max-width: 75% !important; }
+}
