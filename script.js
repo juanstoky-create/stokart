@@ -240,11 +240,8 @@ function initBeforeAfter() {
 /* ===== FAB ===== */
 function initFAB() {
   const fab = document.getElementById('fabWa');
-  const hero = document.getElementById('hero');
-  if (!fab || !hero) return;
-  new IntersectionObserver(([e]) => {
-    fab.classList.toggle('visible', !e.isIntersecting);
-  }, { threshold: 0.3 }).observe(hero);
+  if (!fab) return;
+  fab.classList.add('visible');
 }
 
 /* ===== MODAL BIO ===== */
