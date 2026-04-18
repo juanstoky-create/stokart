@@ -19,6 +19,7 @@ function init() {
   initHeroParallax();
   initBeforeAfter();
   initModalBio();
+  initModalObra();
   initModalVisualizador();
 }
 
@@ -250,6 +251,93 @@ function initFAB() {
   const fab = document.getElementById('fabWa');
   if (!fab) return;
   fab.classList.add('visible');
+}
+
+/* ===== MODAL OBRA ===== */
+function initModalObra() {
+  const overlay = document.getElementById('modalObra');
+  const btnOpen = document.getElementById('btnObraModal');
+  const btnClose = document.getElementById('modalObraClose');
+  if (!overlay || !btnOpen) return;
+
+  btnOpen.addEventListener('click', e => {
+    e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    showStep(1);
+  });
+  btnClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+
+  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+  function showStep(n) {
+    overlay.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('obraStep' + n).classList.add('active');
+    overlay.querySelectorAll('.modal-progress-step').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.step) <= n);
+    });
+    overlay.querySelectorAll('.modal-progress-line').forEach((line, i) => {
+      line.classList.toggle('active', i < n - 1);
+    });
+  }
+
+  // Step 1
+  const fileInput = document.getElementById('obraFileInput');
+  const step1Next = document.getElementById('obraStep1Next');
+
+  fileInput.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const zone = document.getElementById('obraUploadZone');
+    zone.classList.add('has-file');
+    document.getElementById('obraUploadInner').innerHTML =
+      '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.5"><polyline points="20,6 9,17 4,12"/></svg>' +
+      '<span style="color:var(--accent)">Foto cargada</span>' +
+      '<small style="color:var(--text-muted)">' + file.name + '</small>';
+    step1Next.disabled = false;
+  });
+
+  step1Next.addEventListener('click', () => showStep(2));
+  document.getElementById('obraStep2Back').addEventListener('click', () => showStep(1));
+
+  // Step 2
+  let selectedObra = { name: 'Aurelius', custom: false };
+  const customField = document.getElementById('obraCustomField');
+
+  overlay.querySelectorAll('.obra-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      overlay.querySelectorAll('.obra-option').forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      const isCustom = opt.dataset.name === 'Personalizada';
+      selectedObra = { name: opt.dataset.name, custom: isCustom };
+      customField.style.display = isCustom ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('obraStep2Next').addEventListener('click', () => { buildStep3(); showStep(3); });
+  document.getElementById('obraStep3Back').addEventListener('click', () => showStep(2));
+
+  // Step 3
+  function buildStep3() {
+    const customDesc = document.getElementById('obraCustomDesc');
+    let msg, subject;
+
+    if (selectedObra.custom) {
+      const desc = customDesc && customDesc.value.trim() ? ' ' + customDesc.value.trim() : '';
+      document.getElementById('obraSummary').textContent = 'Creación personalizada para tu espacio';
+      msg = 'Hola Juan, subí una foto de mi espacio y me gustaría una obra personalizada.' + desc + ' ¿Podemos conversar?';
+      subject = 'Consulta: Obra personalizada para mi espacio';
+    } else {
+      document.getElementById('obraSummary').textContent = 'Obra seleccionada: ' + selectedObra.name;
+      msg = 'Hola Juan, subí una foto de mi espacio y me interesa la obra ' + selectedObra.name + '. ¿Podemos conversar?';
+      subject = 'Consulta: Obra ' + selectedObra.name + ' para mi espacio';
+    }
+
+    document.getElementById('obraWA').href = 'https://wa.me/5491161592163?text=' + encodeURIComponent(msg);
+    document.getElementById('obraMail').href = 'mailto:juanstoky@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(msg);
+  }
 }
 
 /* ===== MODAL BIO ===== */

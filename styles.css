@@ -400,6 +400,27 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
 .modal-back-btn:hover { color: var(--text); border-color: var(--text-muted); }
 .modal-cta-wa { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: .6rem; font-size: .7rem; letter-spacing: .12rem; text-transform: uppercase; padding: .85rem 1.5rem; background: #1fbe5e; color: #fff; border-radius: 999px; transition: all var(--transition); }
 .modal-cta-wa:hover { background: #1aaa52; }
+
+/* Modal progress */
+.modal-progress { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2.2rem; }
+.modal-progress-step { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: .75rem; color: var(--text-muted); transition: all var(--transition); }
+.modal-progress-step.active { border-color: var(--accent); color: var(--accent); background: rgba(201,169,110,.1); }
+.modal-progress-line { width: 40px; height: 1px; background: var(--border); transition: background var(--transition); }
+.modal-progress-line.active { background: var(--accent); }
+
+/* Obra custom option */
+.obra-option-custom { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; background: rgba(201,169,110,.04); border: 2px dashed rgba(201,169,110,.25) !important; }
+.obra-option-custom.active { border-style: solid !important; }
+.obra-custom-icon { font-size: 1.4rem; color: var(--accent); line-height: 1; }
+.obra-custom-field { display: none; margin-bottom: 1.2rem; }
+.obra-custom-field textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: var(--sans); font-size: .8rem; padding: 1rem; resize: vertical; transition: border-color var(--transition); }
+.obra-custom-field textarea:focus { outline: none; border-color: var(--accent); }
+
+/* Obra summary + contact */
+.obra-summary { font-family: var(--serif); font-style: italic; font-size: .9rem; color: var(--text-muted); text-align: center; margin-bottom: 1.8rem; padding: 1.2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(201,169,110,.04); }
+.obra-contact-actions { display: flex; gap: 1rem; margin-bottom: 1.2rem; }
+.modal-cta-mail { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: .6rem; font-size: .7rem; letter-spacing: .12rem; text-transform: uppercase; padding: .85rem 1.5rem; border: 1px solid var(--border-accent); color: var(--accent); border-radius: 999px; transition: all var(--transition); }
+.modal-cta-mail:hover { background: var(--accent); color: var(--bg); }
 .modal-personalizada { margin-top: 1.5rem; text-align: center; padding-top: 1.2rem; border-top: 1px solid var(--border); font-size: .7rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: .8rem; flex-wrap: wrap; }
 .modal-personalizada a { color: var(--accent); font-size: .68rem; letter-spacing: .06em; transition: color var(--transition); }
 .modal-personalizada a:hover { color: var(--accent-hover); }
