@@ -307,8 +307,8 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
 .espacios { padding-bottom: 3rem; }
 .espacios .section-title { margin-bottom: .6rem; }
 .testimonials { text-align: center; position: relative; min-height: 120px; padding: 0 3.5rem; }
-.testimonial-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 38px; height: 38px; background: rgba(255,255,255,.06); border: 1px solid var(--border); border-radius: 50%; color: var(--text-muted); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all var(--transition); cursor: none; }
-.testimonial-arrow:hover { background: rgba(255,255,255,.1); border-color: var(--accent); color: var(--accent); }
+.testimonial-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 46px; height: 46px; background: rgba(255,255,255,.5); backdrop-filter: blur(8px); border: none; border-radius: 50%; color: #111; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; transition: all var(--transition); cursor: none; }
+.testimonial-arrow:hover { background: rgba(255,255,255,.85); color: #000; }
 .testimonial-prev { left: 0; }
 .testimonial-next { right: 0; }
 .testimonial { display: none; animation: fadeTestimonial .5s ease; }
