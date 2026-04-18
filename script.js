@@ -190,6 +190,8 @@ function initCardClicks() {
 function initTestimonials() {
   const testimonials = document.querySelectorAll('.testimonial');
   const dotsContainer = document.getElementById('testimonialDots');
+  const prev = document.getElementById('testimonialPrev');
+  const next = document.getElementById('testimonialNext');
   if (!testimonials.length || !dotsContainer) return;
 
   let current = 0;
@@ -205,12 +207,13 @@ function initTestimonials() {
 
   function go(n) {
     testimonials[current].classList.remove('active');
-    current = n;
+    current = (n + total) % total;
     testimonials[current].classList.add('active');
     dotsContainer.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
-
+  if (prev) prev.addEventListener('click', () => go(current - 1));
+  if (next) next.addEventListener('click', () => go(current + 1));
 }
 
 /* ===== BEFORE/AFTER ===== */
