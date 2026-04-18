@@ -225,8 +225,9 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   font-size: clamp(1.8rem, 3vw, 3rem);
   letter-spacing: .05em; line-height: 1.05;
 }
-.featured-desc { font-size: .72rem; color: rgba(255,255,255,.7); letter-spacing: .06em; margin: 0; }
-.featured-desc em { font-style: normal; color: var(--accent); font-size: .8rem; }
+.featured-meta { display: flex; flex-direction: column; gap: .15rem; }
+.featured-meta span { font-size: .72rem; color: rgba(255,255,255,.6); letter-spacing: .06em; line-height: 1.4; }
+.featured-price { font-size: .85rem; color: var(--accent); letter-spacing: .06em; margin: .6rem 0 0; font-family: var(--serif); font-weight: 400; }
 .featured-cta {
   pointer-events: auto;
   display: inline-block;
