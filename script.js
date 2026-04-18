@@ -152,10 +152,11 @@ function initFeaturedCarousel() {
   prev.addEventListener('click', () => go(current - 1));
   next.addEventListener('click', () => go(current + 1));
 
-  // Click on slide → WhatsApp
-  slides.forEach(slide => {
-    if (slide.dataset.wa) {
-      slide.addEventListener('click', () => {
+  // Click on CTA only → WhatsApp
+  document.querySelectorAll('.featured-cta').forEach(cta => {
+    const slide = cta.closest('.featured-slide');
+    if (slide && slide.dataset.wa) {
+      cta.addEventListener('click', () => {
         window.open(`https://wa.me/5491161592163?text=${encodeURIComponent(slide.dataset.wa)}`, '_blank');
       });
     }

@@ -178,6 +178,7 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   position: relative;
   z-index: 2;
   flex-shrink: 0;
+  transform: translateY(5%);
 }
 
 /* gradientes laterales negro — integran la imagen al fondo */
@@ -203,7 +204,7 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   align-items: flex-end;
   justify-content: flex-start;
   padding: 0 4% 2.5rem;
-  background: none;
+  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.4) 28%, transparent 55%);
   z-index: 4;
   pointer-events: none;
 }
@@ -459,6 +460,12 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   font-size: clamp(1.6rem, 2.8vw, 2.6rem);
   letter-spacing: .05em; line-height: 1.2;
 }
+.macro-card-left .macro-card-proceso { padding: 0; }
+.macro-card-left .macro-card-proceso-title { text-align: left; font-size: .85rem; margin-bottom: 1rem; }
+.macro-card-left .macro-card-steps { grid-template-columns: 1fr; gap: 1rem; text-align: left; }
+.macro-card-left .macro-step-num { font-size: 1.2rem; }
+.macro-card-left .macro-step h4 { font-size: .95rem; }
+.macro-card-left .macro-step p { font-size: .68rem; }
 
 /* ===== CONTACTO — full mármol sin borde ni padding extra ===== */
 .contacto-content {
