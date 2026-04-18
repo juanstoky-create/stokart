@@ -127,7 +127,7 @@ function initFeaturedCarousel() {
     const dot = document.createElement('div');
     dot.classList.add('f-dot');
     if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => { go(i); resetAuto(); });
+    dot.addEventListener('click', () => go(i));
     dotsContainer.appendChild(dot);
   }
 
@@ -142,9 +142,6 @@ function initFeaturedCarousel() {
     }
   }
 
-  let autoTimer = null;
-  function resetAuto() { clearInterval(autoTimer); autoTimer = setInterval(() => go(current + 1), 5000); }
-
   function go(n) {
     slides[current].classList.remove('active');
     current = (n + total) % total;
@@ -153,9 +150,8 @@ function initFeaturedCarousel() {
     syncMosaic(current);
   }
 
-  prev.addEventListener('click', () => { go(current - 1); resetAuto(); });
-  next.addEventListener('click', () => { go(current + 1); resetAuto(); });
-  resetAuto();
+  prev.addEventListener('click', () => go(current - 1));
+  next.addEventListener('click', () => go(current + 1));
 
   // Click on CTA only → WhatsApp
   document.querySelectorAll('.featured-cta').forEach(cta => {
@@ -171,7 +167,7 @@ function initFeaturedCarousel() {
   mosaicCards.forEach(card => {
     card.addEventListener('click', () => {
       const idx = parseInt(card.dataset.index);
-      if (!isNaN(idx)) { go(idx); resetAuto(); }
+      if (!isNaN(idx)) go(idx);
     });
   });
 
@@ -182,7 +178,7 @@ function initFeaturedCarousel() {
   carousel.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
   carousel.addEventListener('touchend', e => {
     const d = tx - e.changedTouches[0].clientX;
-    if (Math.abs(d) > 50) { d > 0 ? go(current + 1) : go(current - 1); resetAuto(); }
+    if (Math.abs(d) > 50) d > 0 ? go(current + 1) : go(current - 1);
   });
 }
 

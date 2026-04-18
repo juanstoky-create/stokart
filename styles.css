@@ -243,8 +243,8 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
 .featured-cta:hover { background: var(--accent); color: var(--bg); }
 .featured-badge-sold, .featured-badge-wip {
   display: inline-block;
-  font-family: var(--serif); font-size: .78rem; letter-spacing: .06em; font-style: italic;
-  margin-top: .3rem;
+  font-family: var(--serif); font-size: .85rem; letter-spacing: .06em; font-style: normal;
+  margin: .6rem 0 0;
 }
 .featured-badge-sold { color: var(--text-muted); }
 .featured-badge-wip { color: var(--accent); }
