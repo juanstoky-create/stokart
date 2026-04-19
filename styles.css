@@ -305,6 +305,16 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
 .ba-handle { position: absolute; top: 0; bottom: 0; left: 50%; z-index: 5; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; pointer-events: none; }
 .ba-handle-line { flex: 1; width: 1px; background: rgba(255,255,255,.55); }
 .ba-handle-circle { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.95); color: #111; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 16px rgba(0,0,0,.5); pointer-events: auto; flex-shrink: 0; cursor: none; }
+.macro-card-split { display: grid; grid-template-columns: 1.2fr 1fr; min-height: 575px; }
+.macro-card-right { position: relative; overflow: hidden; }
+.macro-card-right .ba-compare { position: absolute; inset: 0; width: 100%; height: 100%; }
+.macro-card-left { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 2rem; padding: 3rem; border-left: 1px solid var(--border); }
+.macro-card-left h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(1.4rem, 2.2vw, 2rem); letter-spacing: .05em; line-height: 1.2; }
+.macro-card-left .macro-card-proceso { padding: 0; }
+.macro-card-left .macro-card-proceso-title { text-align: left; font-size: .85rem; margin-bottom: 1rem; }
+.macro-card-left .macro-card-steps { grid-template-columns: 1fr; gap: 1rem; text-align: left; }
+.macro-card-left .macro-step h4 { font-size: .95rem; }
+.macro-card-left .macro-step p { font-size: .68rem; }
 
 /* Btn visualizar */
 .btn-visualizar { display: inline-flex; align-items: center; gap: .7rem; font-family: var(--sans); font-size: .72rem; letter-spacing: .14rem; text-transform: uppercase; padding: 1rem 2.2rem; border: 1px solid var(--accent); color: var(--accent); border-radius: 999px; background: transparent; white-space: nowrap; transition: all var(--transition); }
@@ -503,40 +513,6 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
 }
 
 
-/* ===== MACRO CARD — before/after izq, título+CTA der ===== */
-.macro-section { padding: 2rem 0 3rem; }
-.macro-card { border-radius: 12px; overflow: hidden; background: var(--bg-card); border: 1px solid var(--border); }
-.macro-card-split {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  min-height: 575px;
-}
-.macro-card-right {
-  position: relative;
-  overflow: hidden;
-}
-.macro-card-right .ba-compare {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-}
-.macro-card-left {
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: flex-start;
-  gap: 2rem;
-  padding: 3rem 3rem;
-  border-left: 1px solid var(--border);
-}
-.macro-card-left h2 {
-  font-family: var(--serif); font-weight: 300;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
-  letter-spacing: .05em; line-height: 1.2;
-}
-.macro-card-left .macro-card-proceso { padding: 0; }
-.macro-card-left .macro-card-proceso-title { text-align: left; font-size: .85rem; margin-bottom: 1rem; }
-.macro-card-left .macro-card-steps { grid-template-columns: 1fr; gap: 1rem; text-align: left; }
-.macro-card-left .macro-step-num { font-size: 1.2rem; }
-.macro-card-left .macro-step h4 { font-size: .95rem; }
-.macro-card-left .macro-step p { font-size: .68rem; }
 
 /* ===== RESPONSIVE ===== */
 /* (mobile overrides consolidated above) */
