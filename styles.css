@@ -467,12 +467,14 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
 
   /* Macro card — full width, imagen grande */
   .macro-section { padding: 0; }
+  .macro-section > .section-divider { display: none; }
   .macro-section .container { max-width: 100%; padding: 0; }
   .macro-card { border-radius: 0; border: none; }
-  .macro-card-split { grid-template-columns: 1fr; }
-  .macro-card-right { min-height: 70vh; }
-  .macro-card-right .ba-compare { position: relative; height: 70vh; }
+  .macro-card-split { grid-template-columns: 1fr; min-height: auto; }
+  .macro-card-right { min-height: auto; aspect-ratio: 3/4; }
+  .macro-card-right .ba-compare { position: absolute; inset: 0; width: 100%; height: 100%; }
   .macro-card-left { border-left: none; border-top: none; padding: 2rem 1.5rem; }
+  .macro-card-left h2 { font-size: 1.35rem; }
   .macro-card-left .macro-card-proceso { display: none; }
 
   /* Contacto — full width, stacked */
