@@ -450,10 +450,10 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   .hero-bio-cta { font-size: .75rem; padding: 1rem 2.4rem; }
   .hero-ig { display: none; }
 
-  /* Carousel — full screen, sin mosaic */
+  /* Carousel — full screen con peek lateral */
   .piezas { padding-bottom: 1rem; }
   .piezas .section-title, .piezas .section-title-accent { display: none; }
-  .featured-carousel { aspect-ratio: auto; height: 85vh; width: 100%; max-width: 100%; border-radius: 0; margin: 0; }
+  .featured-carousel { aspect-ratio: auto; height: 85vh; width: calc(100% - 24px); max-width: calc(100% - 24px); border-radius: 18px; margin: 0 auto; }
   .featured-slide img { max-width: 100%; height: 75%; transform: translateY(-2%); }
   .featured-slide::before, .featured-slide::after { display: none; }
   .featured-overlay { padding: 0 1.5rem 2rem; background: linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.7) 30%, rgba(0,0,0,.2) 50%, transparent 65%); }
@@ -465,10 +465,12 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   .featured-dots { bottom: .8rem; }
   .mosaic-row { display: none; }
 
-  /* Macro card — sin pasos, más grande */
+  /* Macro card — vertical, imagen grande */
+  .macro-section { padding: 1rem 0 2rem; }
+  .macro-card { border-radius: 0; border-left: none; border-right: none; }
   .macro-card-split { grid-template-columns: 1fr; }
-  .macro-card-right { min-height: 380px; }
-  .macro-card-right .ba-compare { position: relative; height: 380px; }
+  .macro-card-right { min-height: 65vh; }
+  .macro-card-right .ba-compare { position: relative; height: 65vh; }
   .macro-card-left { border-left: none; border-top: 1px solid var(--border); padding: 2rem 1.5rem; }
   .macro-card-left .macro-card-proceso { display: none; }
 
@@ -491,8 +493,8 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   .hero-title { font-size: 3.2rem; }
   .hero-sub { font-size: 1rem; }
 
-  .featured-carousel { aspect-ratio: 2/3; }
-  .featured-slide img { max-width: 100%; height: 85%; }
+  .featured-carousel { aspect-ratio: auto; height: 85vh; }
+  .featured-slide img { max-width: 100%; height: 75%; }
   .featured-info { max-width: 92%; }
 
   .mosaic-card { flex: 0 0 82px; }
