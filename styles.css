@@ -452,9 +452,11 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
 
   /* Carousel — más grande, imagen llena */
   .featured-carousel { aspect-ratio: 3/4; }
-  .featured-slide img { max-width: 90%; height: 85%; }
-  .featured-info { max-width: 85%; }
-  .featured-overlay { padding: 0 5% 2rem; }
+  .featured-slide img { max-width: 100%; height: 90%; transform: translateY(3%); }
+  .featured-slide::before, .featured-slide::after { display: none; }
+  .featured-info { max-width: 90%; }
+  .featured-overlay { padding: 0 5% 2rem; background: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.5) 35%, transparent 60%); }
+  .featured-arrow { width: 36px; height: 36px; font-size: 1.1rem; }
 
   /* Mosaic */
   .mosaic-card { flex: 0 0 98px; }
@@ -486,8 +488,8 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   .hero-sub { font-size: 1rem; }
 
   .featured-carousel { aspect-ratio: 2/3; }
-  .featured-slide img { max-width: 100%; height: 80%; }
-  .featured-info { max-width: 90%; }
+  .featured-slide img { max-width: 100%; height: 85%; }
+  .featured-info { max-width: 92%; }
 
   .mosaic-card { flex: 0 0 82px; }
   .obra-picker { grid-template-columns: repeat(2,1fr); }
