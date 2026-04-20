@@ -476,7 +476,7 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
   .mosaic-row { display: none; }
 
   /* Macro card — solo antes/después, full screen */
-  .macro-section { padding: 0; }
+  .macro-section { padding: 4rem 0 0; }
   .macro-section > .section-divider { display: none; }
   .macro-section .container { max-width: 100%; padding: 0; }
   .macro-card { border-radius: 0; border: none; }
