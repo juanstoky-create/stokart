@@ -89,10 +89,11 @@ body.cursor-view .cursor-ring { width: 64px; height: 64px; opacity: .6; }
 .hero-rule-line { flex: 1; height: 1px; background: var(--border-accent); }
 .hero-rule-diamond { width: 5px; height: 5px; background: var(--accent); transform: rotate(45deg); flex-shrink: 0; }
 .hero-sub {
-  font-size: .9rem; font-weight: 400; letter-spacing: .06em;
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 1.15rem; letter-spacing: .03em;
   color: #fff;
   text-shadow: 0 1px 20px rgba(0,0,0,.95), 0 0 50px rgba(0,0,0,.8);
-  max-width: 440px; margin: 0 auto 1.8rem; line-height: 1.85;
+  max-width: 480px; margin: 0 auto 1.8rem; line-height: 1.75;
 }
 .hero-bio-cta {
   display: inline-flex; align-items: center; gap: .6rem;
